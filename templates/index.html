@@ -1,0 +1,171 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/index_style.css') }}">
+    <title>Dashboard</title>
+</head>
+<script type="text/javascript">
+		$(document).ready(function() {
+			// Handle the dropdown selection
+			$('#dropdown1').change(function() {
+				// Retrieve the selected value
+				var selectedValue = $(this).val();
+
+				// Make an AJAX request to retrieve the selected row data
+				$.ajax({
+					type: 'POST',
+					url: '/get_row_data_1',
+					data: {'selected_value': selectedValue},
+					success: function(response) {
+						// Update the div with the selected row data
+						$('#row_data').html(
+							'<p style="font-size: 18px;font-family: "Times New Roman", Times, serif; margin: 0px " >' + response.column1 + '</p>' +
+              				'<img style=\'height: 300px; width: 150px; margin-right: 4px;\'src="' + response.column2 + '">' +
+                            '<p style=\"font-size: 18px;font-family: "Times New Roman", Times, serif;">' + response.column3 + '</p>' +
+                            '<p style=\"font-size: 18px;font-family: "Times New Roman", Times, serif;">' + response.column4 + '</p>' +
+                            '<p style="font-size: 18px;font-family: "Times New Roman", Times, serif;" >' + response.column5 + '</p>' +
+                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column6 + '</p>' +
+                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column7 + '</p>' +
+                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column8 + '</p>' +
+                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column9 + '</p>' +
+                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column10 + '</p>' +
+                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column11 + '</p>' 
+						);
+					}
+				});
+			});
+		});
+        $(document).ready(function() {
+			// Handle the dropdown selection
+			$('#dropdown2').change(function() {
+				// Retrieve the selected value
+				var selectedValue_2 = $(this).val();
+
+				// Make an AJAX request to retrieve the selected row data
+				$.ajax({
+					type: 'POST',
+					url: '/get_row_data_2',
+					data: {'selected_value_2': selectedValue_2},
+					success: function(response_2) {
+						// Update the div with the selected row data
+						$('#row_data_2').html(
+							'<p style="font-size: 18px; "Times New Roman", Times, serif;margin: 0px " >' + response_2.column_1 + '</p>' +
+              				'<img style=\'height: 300px; width: 150px; margin-right: 4px;\'src="' + response_2.column_2 + '">' +
+                            '<p style=\"font-size: 18px; "Times New Roman", Times, serif;">' + response_2.column_3 + '</p>' +
+                            '<p style=\"font-size: 18px; "Times New Roman", Times, serif;">' + response_2.column_4 + '</p>' +
+                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_5 + '</p>' +
+                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_6 + '</p>' +
+                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_7 + '</p>' +
+                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_8 + '</p>' +
+                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_9 + '</p>' +
+                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_10 + '</p>' +
+                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_11 + '</p>'
+						);
+					}
+				});
+			});
+		});
+            function updatePage() {
+                var selectedValue = document.getElementById("dropdown").value;
+                var image = document.getElementById("image");
+                if (selectedValue === "image1") {
+                    image.src = "{{ url_for('static', filename='images/front.jpg') }}";
+                } else if (selectedValue === "image2") {
+                    image.src = "{{ url_for('static', filename='images/rear.jpg') }}";
+                } 
+                    else if (selectedValue == "None") {
+                    image.src = "{{ url_for('static', filename='images/None.jpg') }}"
+                }
+                    else {
+                    image.src = "";
+                }
+            }
+</script>
+<body>
+    <header>
+        <h1><nav><a href='/index'>Phone Camera Comparison</a></nav></h1>
+        <nav>
+            <ul>
+                <li><a href='/index'>Home</a></li>
+                <li><a href="index/about">About</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+    </header>
+      </style>
+    <div class="container">
+        <div class="flex-container">
+            <div class="box1">
+            <img id="image" src="{{ url_for('static', filename='images/None.jpg') }}" alt="Selected Image" />
+            </div>
+            <div class="box2">
+                <img src="{{ url_for('static', filename='images/None.jpg') }}">
+            </div>
+            <div class="box3">
+                <img src="{{ url_for('static', filename='images/None.jpg') }}">
+            </div>
+        </div>
+        <hr>
+        <div class="text-container">
+            <div>
+                <form method="POST" action="/index">
+                    <select id="dropdown" onchange="updatePage()">
+                        <option value="None">Select an image</option>
+                        <option value="image1">Front Image</option>
+                        <option value="image2">Rear Image</option>
+                    </select>
+                    <input type="hidden" id="selected-image" name="selected-image" value="">
+                    <form id="image-form" method="post" action="/select_image">
+                        <input id="image-input" type="hidden" name="image" value="">
+                    </form>
+                </form>
+            </div>
+            <div>
+                <label for="dropdown1"></label>
+                <select id="dropdown1">
+                    {% for value in dropdown_data %}
+                        <option value="{{ value[0] }}">{{ value[0] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="dropdown2"></label>
+                <select id="dropdown2">
+                    {% for value in dropdown_data %}
+                        <option value="{{ value[0] }}">{{ value[0] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <hr>
+        <div class="flex-container1">
+            <div class="box1">
+                <img src="" alt="">
+                <p>Price:</p>
+                <p>Spec Score:</p>
+                <p>Technical:</p>
+                <p>Storage:</p>
+                <p>Battery:</p>
+                <p>Display:</p>
+                <p>Camera:</p>
+                <p>OS version:</p>
+                <p>Extra:</p>
+            </div>
+            <div class="box2">
+                <div id="row_data"></div>
+            </div>
+            <div class="box3">
+                <div id="row_data_2"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&phone; Contact</p>
+    </footer>
+    </body>
+</html>

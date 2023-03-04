@@ -1,0 +1,9 @@
+insert = ''' insert into login (username,password) values("yash","yash")'''
+select = '''SELECT * FROM Login'''
+delete = ''' DELETE FROM login where username = 'pratik' and password = 'pratik' '''
+create = ''' CREATE TABLE signin( 
+                                    username varchar(50),
+                                    email varchar(50),
+                                    password varchar(50),
+                                    confirm_psk varchar(50)
+                                )'''

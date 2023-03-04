@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register_style.css') }}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Sign up</h1>
+		<form method = "post" action = "/register">
+			<label  for="username"><i class="fa fa-user"></i> Username:</label>
+			<input type="text" id="username" name="username" required>
+			<label for="email"> <i class="fa fa-envelope"></i> Email:</label>
+			<input type="email" id="email" name="email" required>
+			<label for="password"> <i class="fa fa-key"></i>  Password:  <span class="eye" onclick="myFunction_1()" >
+				<i id ="hide" class="fa fa-eye"></i>
+				<i id="hides" class="fa fa-eye-slash"></i>
+			</span>    </label>
+			<input type="password" id="password" name="password"  required>
+
+			<label for="confirm-password"> <i class="fa fa-key"></i>  Confirm Password: <span class="eye" onclick="myFunction()" >
+				<i id ="hide1" class="fa fa-eye"></i>
+				<i id="hide2" class="fa fa-eye-slash"></i>
+			</span> </label>
+			<input type="password" id="confirm-password" name="confirm-password" required>
+			<input type="submit" value="Sign Up">
+      <p class="para-2">
+        Already have an account? <a href="{{url_for('login')}}"> Login here</a>
+      </p>
+		</form>
+	</div>
+	<script>
+		function myFunction(){
+			var x = document.getElementById("confirm-password");
+			var y = document.getElementById("hide1");
+			var z = document.getElementById("hide2");
+  
+			if(x.type === 'password'){
+			  x.type = "text";
+			  y.style.display = "block";
+			  z.style.display = "none";
+			}
+			else{
+			  x.type = "password";
+			  y.style.display = "none";
+			  z.style.display = "block";
+			}
+		}
+		function myFunction_1(){
+			var x = document.getElementById("password");
+			var y = document.getElementById("hide");
+			var z = document.getElementById("hides");
+  
+			if(x.type === 'password'){
+			  x.type = "text";
+			  y.style.display = "block";
+			  z.style.display = "none";
+			}
+			else{
+			  x.type = "password";
+			  y.style.display = "none";
+			  z.style.display = "block";
+			}
+		}
+	  </script>
+</body>
+</html>

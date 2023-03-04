@@ -1,0 +1,79 @@
+body {
+	font-family: Arial, sans-serif;
+	background-image: url('login_bg.jpg');
+}
+
+.container {
+	margin: auto;
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 110px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	margin-top: 10px;
+}
+
+input[type=text], input[type=email], input[type=password] {
+	/* padding: 10px;
+	margin-top: 5px;
+	border: none;
+	border-radius: 3px;
+     */
+    display: block;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type=submit] {
+	display: block;
+    width: 99%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #3e8e41;
+}
+.para-2 {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.para-2 a {
+    color: #3c23cb;
+}
+
+.eye {
+    position: relative;
+    float: right;
+    margin-right:5px;
+}
+
+#hide1 {
+    display: none;
+}
+#hide {
+    display: none;
+}

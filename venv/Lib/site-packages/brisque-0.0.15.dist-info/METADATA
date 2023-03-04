@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: brisque
+Version: 0.0.15
+Summary: Image Quality
+Home-page: https://github.com/rehanguha/brisque
+Author: Rehan Guha
+Author-email: rehanguha29@gmail.com
+License: mit
+Keywords: quality,svm,image,maths
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering
+Classifier: Intended Audience :: Developers
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: scikit-image
+Requires-Dist: scipy
+Requires-Dist: opencv-python
+Requires-Dist: libsvm
+
+# Blind/Referenceless Image Spatial Quality Evaluator (BRISQUE) 
+
+BRISQUE is a no-reference image quality score.
+
+A good place to know how BRISQUE works : [LearnOpenCV](https://learnopencv.com/image-quality-assessment-brisque/)
+
+
+## Installation
+
+```bash
+pip install brisque
+```
+
+## Usage
+
+1. Trying to perform Image Quality Assessment on **local images** 
+```python
+from brisque import BRISQUE
+
+obj = BRISQUE(url=False)
+obj.score("<Ndarray of the Image>")
+```
+
+2. Trying to perform Image Quality Assessment on **web images** 
+```python
+from brisque import BRISQUE
+
+obj = BRISQUE(url=True)
+obj.score("<URL for the Image>")
+```
+
+### Example
+
+- Input
+```python
+from brisque import BRISQUE
+
+obj = BRISQUE("https://www.mathworks.com/help/examples/images/win64/CalculateBRISQUEScoreUsingCustomFeatureModelExample_01.png", 
+        url=True)
+obj.score()
+```
+- Output
+```
+74.41910327611319
+```
