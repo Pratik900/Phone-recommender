@@ -5,12 +5,10 @@ import sqlite3
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
 
-# Setup login manager
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-# Sample user model
 class User(UserMixin):
     def __init__(self, id, name):
         self.id = id
@@ -25,7 +23,6 @@ class User(UserMixin):
         conn.close()
         return user
 
-# Login manager loader
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
@@ -45,7 +42,7 @@ def register():
             conn = sqlite3.connect(".\database\database.db")
             cursor = conn.cursor()
             insert_query =  ''' INSERT INTO signup (username,email,password) VALUES(?,?,?)'''
-            cursor.execute(insert_query,(username,email,password,confirm_psk))
+            cursor.execute(insert_query,(username,email,password))
             conn.commit()
             conn.close()
             return render_template('login.html')
@@ -72,6 +69,7 @@ def login():
     else:
         return render_template('login.html')
 
+
 @app.route('/index', methods=['POST','GET'])
 @login_required
 def home():
@@ -82,11 +80,12 @@ def home():
     conn.close()
     return render_template('index.html', dropdown_data=dropdown_data)
 
+
 @app.route('/get_row_data_1', methods=['POST'])
 def get_row_data():
         conn = sqlite3.connect('.\database\database.db')
         cursor = conn.cursor()
-        selected_value = request.form['selected_value']
+        selected_value = request.form.get('selected_value')
         print(selected_value)
         cursor.execute("SELECT * FROM phone WHERE  \ufeffPhone_name = ?", (selected_value,))
         row_data = cursor.fetchone()
@@ -94,6 +93,7 @@ def get_row_data():
                  'column6': row_data[6], 'column7': row_data[7], 'column8': row_data[8], 'column9': row_data[9], 'column10': row_data[10], 
                  'column11': row_data[11]}
         return jsonify(response)
+
 
 @app.route('/get_row_data_2', methods=['POST'])
 def get_row_data_2():

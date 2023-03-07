@@ -71,20 +71,17 @@
 			});
 		});
             function updatePage() {
-                var selectedValue = document.getElementById("dropdown").value;
-                var image = document.getElementById("image");
-                if (selectedValue === "image1") {
-                    image.src = "{{ url_for('static', filename='images/front.jpg') }}";
-                } else if (selectedValue === "image2") {
-                    image.src = "{{ url_for('static', filename='images/rear.jpg') }}";
-                } 
-                    else if (selectedValue == "None") {
-                    image.src = "{{ url_for('static', filename='images/None.jpg') }}"
+                    var selectedValue = document.getElementById("dropdown").value;
+                    var image = document.getElementById("image");
+                    if (selectedValue === "image1") {
+                        image.src = "{{ url_for('static', filename='images/front.jpg') }}";
+                    } else if (selectedValue === "image2") {
+                        image.src = "{{ url_for('static', filename='images/rear.jpg') }}";
+                    } else {
+                        image.src = "{{ url_for('static', filename='images/None.jpg') }}"
+                    }
+                    document.getElementById("image-form").submit();
                 }
-                    else {
-                    image.src = "";
-                }
-            }
 </script>
 <body>
     <header>
@@ -92,38 +89,16 @@
         <nav>
             <ul>
                 <li><a href='/index'>Home</a></li>
-                <li><a href="index/about">About</a></li>
-                <li><a href="/logout">Log out</a></li>
+                <li><a href='index/about'>About</a></li>
+                <li><a href='/logout'>Log out</a></li>
             </ul>
         </nav>
     </header>
       </style>
     <div class="container">
-        <div class="flex-container">
-            <div class="box1">
-            <img id="image" src="{{ url_for('static', filename='images/None.jpg') }}" alt="Selected Image" />
-            </div>
-            <div class="box2">
-                <img src="{{ url_for('static', filename='images/None.jpg') }}">
-            </div>
-            <div class="box3">
-                <img src="{{ url_for('static', filename='images/None.jpg') }}">
-            </div>
-        </div>
-        <hr>
         <div class="text-container">
-            <div>
-                <form method="POST" action="/index">
-                    <select id="dropdown" onchange="updatePage()">
-                        <option value="None">Select an image</option>
-                        <option value="image1">Front Image</option>
-                        <option value="image2">Rear Image</option>
-                    </select>
-                    <input type="hidden" id="selected-image" name="selected-image" value="">
-                    <form id="image-form" method="post" action="/select_image">
-                        <input id="image-input" type="hidden" name="image" value="">
-                    </form>
-                </form>
+            <div class="text">
+                Phone Comparision:
             </div>
             <div>
                 <label for="dropdown1"></label>
@@ -162,6 +137,36 @@
             <div class="box3">
                 <div id="row_data_2"></div>
             </div>
+        </div>
+        <hr>
+        <div class="flex-container">
+            <div class="box1">
+            <img id="image" src="{{ url_for('static', filename='images/None.jpg') }}" name="Image_selected" />
+            </div>
+            <div class="box2">
+                <img src="{{ url_for('static', filename='images/None.jpg') }}">
+            </div>
+            <div class="box3">
+                <img src="{{ url_for('static', filename='images/None.jpg') }}">
+            </div>
+        </div>
+        
+        <div class="select">
+            <form method="POST" action="/index">
+                <select id="dropdown" onchange="updatePage()">
+                    <option value="None">Select an image</option>
+                    <option value="image1">Front Image</option>
+                    <option value="image2">Rear Image</option>
+                </select>
+                <input type="hidden" id="selected-image" name="selected-image" value="">
+                <form id="image-form" method="post" action="/select_image">
+                    <input id="image-input" type="hidden" name="image" value="">
+                </form>
+            </form>
+        </div>
+        <hr>
+        <div class="spam">
+
         </div>
     </div>
     <footer>

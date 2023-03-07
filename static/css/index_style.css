@@ -10,44 +10,46 @@ body {
     margin: 0px auto;
     background-color: white;
     box-shadow: 0 0 10px black;
+    
 }
-
 .flex-container {
     display: flex;
 }
 
 .flex-container>div {
-    background-color: rgb(254, 254, 254);
     color: black;
-    width: 520px;
+    width: 375px;
     height: auto;
     margin: 10px;
     text-align: center;
-    line-height: 75px;
+    line-height: 30px;
     font-size: 30px;
     border: 2px solid black;
-    margin-top: 100px;
+    margin-top: 10px;
+    margin-bottom: 40px;
 }
 
 .text-container {
     display: flex;
+    
 }
-
 .text-container>div {
-
+    padding-top: 100px;
     color: black;
     width: 500px;
     margin: 2px;
     text-align: center;
-    font-size: 12px;
+    font-size: 17px;
 }
-
+.text-container>p
+{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
 #select {
     width: 80%;
     height: 30px;
 }
-
-
 header {
     height: 40px;
     background-color: #2a598a;
@@ -63,22 +65,17 @@ header {
     top: 0;
     box-shadow: 0 0 10px black;
 }
-
 nav ul {
     list-style: none;
     display: flex;
 }
-
 nav li {
     margin-right: 40px;
 }
-
 nav a {
     color: #fff;
     text-decoration: none;
-
 }
-
 .flex-container1 p {
     font-family: 'Times New Roman', Times, serif;
     font-size: 18;
@@ -111,17 +108,16 @@ nav a {
 
 .flex-container1>div {
     /* background-color: DodgerBlue; */
+    background-color: rgb(254, 254, 254);
     color: black;
-    width: 375px;
+    width: 520px;
     height: auto;
     margin: 10px;
     text-align: center;
-    line-height: 30px;
+    line-height: 75px;
     font-size: 30px;
     border: 2px solid black;
-    margin-top: 10px;
-    margin-bottom: 100px;
-
+   
 }
 
 footer {
@@ -152,3 +148,14 @@ footer p {
 
 }
 
+.comp {
+    font: 50px;
+}
+
+.text {
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.spam{
+    padding-bottom: 200px;
+}
