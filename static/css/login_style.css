@@ -1,6 +1,12 @@
 body {
 	font-family: Arial, sans-serif;
-	background-image: url('login_bg.jpg');
+}
+.bg{
+    background-image: url('../images/login_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 form {
