@@ -4,21 +4,32 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login_style.css') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
   <body>
-    <form method="post" action="/">
-      <div>
-        <h1>Login</h1>
-        <label> <i class="fa fa-user"></i> Username:</label>
-        <input type="text" name="username" />
-        <label> <i class="fa fa-key"></i> Password:<span class = "eye" onclick="myFunction()">
-          <i id ="hide1" class="fa fa-eye"></i>
-          <i id="hide2" class="fa fa-eye-slash"></i>
-          </span> </label>
-        <input type="password" name="password" id="myInput" />
-
-        <input type="submit" value="Login" />
-        <p class="para-2">
+    <form method="post" action="/" class="container mt-5">
+      <div class="card p-5">
+        <h1 class="mb-4">Login</h1>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-user"></i></span>
+          </div>
+          <input type="text" name="username" class="form-control" placeholder="Username">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-key"></i></span>
+          </div>
+          <input type="password" name="password" class="form-control" placeholder="Password" id="myInput">
+          <div class="input-group-append">
+            <span class="input-group-text" onclick="myFunction()">
+              <i id="hide1" class="fa fa-eye"></i>
+              <i id="hide2" class="fa fa-eye-slash"></i>
+            </span>
+          </div>
+        </div>
+        <input type="submit" value="Login" class="btn btn-primary btn-block">
+        <p class="mt-3">
           Not have an account? <a href="{{ url_for('register') }}">Sign-up Here</a>
         </p>
       </div>
