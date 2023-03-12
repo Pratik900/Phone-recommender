@@ -37,7 +37,7 @@ def register():
         username = request.form['username']
         email = request.form['email']  
         password = request.form['password']
-        confirm_psk = request.form['confirm-password']
+        confirm_psk = request.form['Confirm_password']
         if password == confirm_psk:
             conn = sqlite3.connect(".\database\database.db")
             cursor = conn.cursor()
@@ -63,11 +63,17 @@ def login():
         if row:
             user = User(row[0], row[1])
             login_user(user)
-            return redirect(url_for('home'))
+            return redirect(url_for('dashboard'))
         else:
             return render_template('login.html')
     else:
         return render_template('login.html')
+
+@app.route('/dashboard', methods = ['POST','GET'])
+@login_required
+def dashboard():
+    return render_template('dashboard.html')
+
 
 
 @app.route('/index', methods=['POST','GET'])

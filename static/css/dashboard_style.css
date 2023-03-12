@@ -1,0 +1,58 @@
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 30%;
+
+}
+
+.flex-item {
+    width: 50%;
+    height: 100%;
+    margin: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+    border-color: black;
+
+
+}
+
+.flex-item img {
+    width: 30%;
+    height: 50%;
+    object-fit: fill;
+}
+#search{
+    width: auto;
+}
+.btn{
+    border-radius: 1px;
+    margin-left: 10px;
+    height: 10%;
+    border-radius: 70px;
+    
+}
+    /* Media queries for adjusting the layout */
+    @media (max-width: 991px) {
+        .flex-container {
+          flex-wrap: wrap;
+        }
+        .flex-item {
+          flex-basis: 70%;
+          max-width: 70%;
+        }
+      }
+      @media (max-width: 767px) {
+        .flex-item {
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+      }
+
+
+
+

@@ -2,13 +2,14 @@ body {
 	font-family: Arial, sans-serif;
 }
 .bg{
-    background-image: url('../images/login_bg.jpg');
+    background-image: -webkit-linear-gradient(top,#2a598a,#ffffff);
+    /* background-image: url('../images/login_bg.jpg'); */
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
 }
-
+/* 
 .container {
 	margin: auto;
     background-color: #ffffff;
@@ -17,7 +18,8 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+} */
+
 
 h1 {
 	text-align: center;
@@ -33,11 +35,6 @@ label {
 }
 
 input[type=text], input[type=email], input[type=password] {
-	/* padding: 10px;
-	margin-top: 5px;
-	border: none;
-	border-radius: 3px;
-     */
     display: block;
     width: 95%;
     padding: 10px;
@@ -59,7 +56,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-	background-color: #3e8e41;
+    background-color: #3e8e41;
 }
 .para-2 {
     text-align: center;
