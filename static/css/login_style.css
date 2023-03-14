@@ -2,7 +2,7 @@ body {
 	font-family: Arial, sans-serif;
 }
 .bg{
-    background-image: -webkit-linear-gradient(top,#2a598a,#ffffff);
+    background-image: -webkit-linear-gradient(top left,#385d8a,#f5eee1);
     /* background-image: url('../images/login_bg.jpg'); */
     background-repeat: no-repeat;
     background-position: center center;
@@ -48,7 +48,7 @@ input[type="submit"] {
     display: block;
     width: 99%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #5fad41;
     color: #fff;
     border: none;
     border-radius: 5px;

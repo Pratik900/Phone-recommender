@@ -5,42 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet"  href="{{ url_for('static', filename='css/index_style.css') }}">
     <title>Dashboard</title>
 </head>
 <script type="text/javascript">
-		$(document).ready(function() {
-			// Handle the dropdown selection
-			$('#dropdown1').change(function() {
-				// Retrieve the selected value
-				var selectedValue = $(this).val();
+  $(document).ready(function() {
+    // Handle the dropdown selection
+    $('#dropdown_1').change(function() {
+      // Retrieve the selected value
+      var selectedValue = $(this).val();
 
-				// Make an AJAX request to retrieve the selected row data
-				$.ajax({
-					type: 'POST',
-					url: '/get_row_data_1',
-					data: {'selected_value': selectedValue},
-					success: function(response) {
-						// Update the div with the selected row data
-						$('#row_data').html(
-							'<p style="font-size: 18px;font-family: "Times New Roman", Times, serif; margin: 0px " >' + response.column1 + '</p>' +
-              				'<img style=\'height: 300px; width: 150px; margin-right: 4px;\'src="' + response.column2 + '">' +
-                            '<p style=\"font-size: 18px;font-family: "Times New Roman", Times, serif;">' + response.column3 + '</p>' +
-                            '<p style=\"font-size: 18px;font-family: "Times New Roman", Times, serif;">' + response.column4 + '</p>' +
-                            '<p style="font-size: 18px;font-family: "Times New Roman", Times, serif;" >' + response.column5 + '</p>' +
-                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column6 + '</p>' +
-                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column7 + '</p>' +
-                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column8 + '</p>' +
-                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column9 + '</p>' +
-                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column10 + '</p>' +
-                            '<p style="font-size: 18px; font-family: "Times New Roman", Times, serif;" >' + response.column11 + '</p>' 
-						);
-					}
-				});
-			});
-		});
-        $(document).ready(function() {
+      // Make an AJAX request to retrieve the selected row data
+      $.ajax({
+        type: 'POST',
+        url: '/get_row_data',
+        data: {'selected_value': selectedValue},
+        success: function(response) {
+          // Update the div with the selected row data
+          $('#row_data').html(
+            '<img src="' + response.column2 + '">' +
+            '<ul><li>'+ response.column1 + '</li></ul>'+
+            '<ul><li>'+ response.column3 + '</li></ul>'+
+            '<ul><li>'+ response.column4 + '</li></ul>'+
+            '<ul><li>'+ response.column5 + '</li></ul>'+
+            '<ul><li>'+ response.column6 + '</li></ul>'+
+            '<ul><li>'+ response.column7 + '</li></ul>'+
+            '<ul><li>'+ response.column8 + '</li></ul>'+
+            '<ul><li>'+ response.column9 + '</li></ul>'+
+            '<ul><li>'+ response.column10 + '</li></ul>'+
+            '<ul><li>'+ response.column11 + '</li></ul>'
+          );
+        }
+      });
+    });
+  });
+  $(document).ready(function() {
 			// Handle the dropdown selection
 			$('#dropdown2').change(function() {
 				// Retrieve the selected value
@@ -54,23 +55,53 @@
 					success: function(response_2) {
 						// Update the div with the selected row data
 						$('#row_data_2').html(
-							'<p style="font-size: 18px; "Times New Roman", Times, serif;margin: 0px " >' + response_2.column_1 + '</p>' +
-              				'<img style=\'height: 300px; width: 150px; margin-right: 4px;\'src="' + response_2.column_2 + '">' +
-                            '<p style=\"font-size: 18px; "Times New Roman", Times, serif;">' + response_2.column_3 + '</p>' +
-                            '<p style=\"font-size: 18px; "Times New Roman", Times, serif;">' + response_2.column_4 + '</p>' +
-                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_5 + '</p>' +
-                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_6 + '</p>' +
-                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_7 + '</p>' +
-                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_8 + '</p>' +
-                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_9 + '</p>' +
-                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_10 + '</p>' +
-                            '<p style="font-size: 18px; "Times New Roman", Times, serif;" >' + response_2.column_11 + '</p>'
+              '<img src="' + response_2.column_2 + '">' +
+              '<ul><li>'+ response_2.column_1 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_3 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_4 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_5 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_6 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_7 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_8 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_9 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_10 + '</li></ul>'+
+              '<ul><li>'+ response_2.column_11 + '</li></ul>'
 						);
 					}
 				});
 			});
 		});
-            function updatePage() {
+    $(document).ready(function() {
+			// Handle the dropdown selection
+			$('#dropdown3').change(function() {
+				// Retrieve the selected value
+				var selectedValue_3 = $(this).val();
+
+				// Make an AJAX request to retrieve the selected row data
+				$.ajax({
+					type: 'POST',
+					url: '/get_row_data_3',
+					data: {'selected_value_3': selectedValue_3},
+					success: function(response_3) {
+						// Update the div with the selected row data
+						$('#row_data_3').html(
+              '<img src="' + response_3.column_2 + '">' +
+              '<ul><li>'+ response_3.column_1 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_3 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_4 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_5 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_6 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_7 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_8 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_9 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_10 + '</li></ul>'+
+              '<ul><li>'+ response_3.column_11 + '</li></ul>'
+						);
+					}
+				});
+			});
+		});
+  function updatePage() {
                     var selectedValue = document.getElementById("dropdown").value;
                     var image = document.getElementById("image");
                     if (selectedValue === "image1") {
@@ -121,51 +152,85 @@
               <h2>Filter</h2>
               <ul>
                 <h2>Overview</h2>
-                <li>price </li>
-                <li>Specs score </li>
-                <li>network </li>
+                <li>Price:</li>
+                <li>Spec Score:</li>
+                <li>Technical:</li>
+                <li>Storage:</li>
+                <li>Battery:</li>
+                <li>Display:</li>
+                <li>Camera:</li>
+                <li>OS version:</li>
+                <li>Extra:</li>
+                <div class="box1">
+                  <img id="image" src="{{ url_for('static', filename='images/None.jpg') }}" name="Image_selected" />
+                  <div class="select">
+                    <form method="POST" action="/index">
+                        <select id="dropdown" onchange="updatePage()">
+                            <option value="None">Select an image</option>
+                            <option value="image1">Front Image</option>
+                            <option value="image2">Rear Image</option>
+                        </select>
+                        <input type="hidden" id="selected-image" name="selected-image" value="">
+                        <form id="image-form" method="post" action="/select_image">
+                            <input id="image-input" type="hidden" name="image" value="">
+                        </form>
+                    </form>
+                  </div>
+                </div>
               </ul>
             </div>
           </div>
   
           <div class="col-md-6 col-lg-3">
             <div class="phone">
-                <h2>Phone 1</h2>
-                <img src="{{ url_for('static', filename='images/images.jpg') }}" alt="Phone 1">
+                <div>
+                  <label for="dropdown_1"></label>
+                  <select id="dropdown_1">
+                    {% for value in dropdown_data %}
+                      <option value="{{ value[0] }}">{{ value[0] }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
                 <ul>
-                  <li>Feature 1</li>
-                  <li>Feature 2</li>
-                  <li>Feature 3</li>
+                  <li><div id="row_data"></div></li>
                 </ul>
               </div>
           </div>
   
           <div class="col-md-6 col-lg-3">
             <div class="phone">
-                <h2>Phone 2</h2>
-                <img src="{{ url_for('static', filename='images/dual.jpg') }}" alt="Phone 2">
-                <ul>
-                  <li>Feature 1</li>
-                  <li>Feature 2</li>
-                  <li>Feature 3</li>
-                </ul>
+                <div>
+                  <label for="dropdown2"></label>
+                  <select id="dropdown2">
+                      {% for value in dropdown_data %}
+                          <option value="{{ value[0] }}">{{ value[0] }}</option>
+                      {% endfor %}
+                  </select>
               </div>
+              <ul>
+                <li><div id="row_data_2"></div></li>
+              </ul>
+            </div>
           </div>
-  
+
           <div class="col-md-6 col-lg-3">
             <div class="phone">
-                <h2>Phone 3</h2>
-                <img src="phone3.jpg" alt="Phone 3" />
-                <ul>
-                  <li>Feature 1</li>
-                  <li>Feature 2</li>
-                  <li>Feature 3</li>
-                </ul>
+                <div>
+                  <label for="dropdown3"></label>
+                  <select id="dropdown3">
+                      {% for value in dropdown_data %}
+                          <option value="{{ value[0] }}">{{ value[0] }}</option>
+                      {% endfor %}
+                  </select>
               </div>
+              <ul>
+                <li><div id="row_data_3"></div></li>
+              </ul>
+            </div>
           </div>
+
         </div>
       </div>        
-    
     <footer class="fixed-bottom">
     <nav class="navbar navbar-default  bg-primary navbar-fixed-bottom " role="navigation">
         <div class="container text-center">

@@ -36,6 +36,9 @@
     border-radius: 70px;
     
 }
+#btn{
+  padding-top: 5%;
+}
     /* Media queries for adjusting the layout */
     @media (max-width: 991px) {
         .flex-container {
@@ -52,6 +55,7 @@
           max-width: 100%;
         }
       }
+
 
 
 
