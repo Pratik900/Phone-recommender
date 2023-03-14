@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: #385d8a;"  >
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #385d8a;"  >
     <div class="container-fluid">
       <a class="navbar-brand" href="/dashboard">Phone Camera Comparision</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -22,87 +22,93 @@
           <button type="button" class="btn btn-success">Search</button>
         </div>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <li class="nav-item ">
+            <a class="nav-link " aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/index">Comparision</a>
+          <li class="nav-item ">
+            <a class="nav-link " href="/index">Comparision</a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="/index/about">About</a>
+          <li class="nav-item ">
+            <a class="nav-link " href="/index/about">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Log out</a>
+          <li class="nav-item ">
+            <a class="nav-link " href="/logout">Log out</a>
           </li> 
         </ul>
       </div>
     </div>
   </nav>
   <div class="container-fluid">
-    <div class="row flex-container">
+    <form method = "POST" action="/compare" >
+      <div class="row flex-container">
 
-      <div class="col-md-4 flex-item">
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        vs
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        <div class="break" id="btn">
-          <button type="button" class="btn btn-success">Compare</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 flex-item">
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        vs
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        <div class="break" id="btn">
-          <button type="button" class="btn btn-success">Compare</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 flex-item">
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        vs
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        <div class="break" id="btn">
-          <button type="button" class="btn btn-success">Compare</button>
+        <div class="col-md-4 flex-item ">
+          <img src="https://cdn1.smartprix.com/rx-izLSMVlI0-w280-h280/samsung-galaxy-s23-u.webp" alt="Flexbox Image 1" />
+          vs
+          <img src="{{ url_for('static', filename='images/dual.jpg') }}"alt="Flexbox Image 1" />
+          <br>
+          <div class="phone_name">
+            OnePlus 11R OnePlus 11R
+          </div>
+          <div class="break" id="btn">
+            <button type="button" class="btn btn-success" value="btn1">Compare</button>
+          </div>
         </div>
 
-      </div>
-      <div class="col-md-4 flex-item">
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        vs
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        <div class="break" id="btn">
-          <button type="button" class="btn btn-success">Compare</button>
+        <div class="col-md-4 flex-item">
+          <img src="https://cdn1.smartprix.com/rx-iTWs9Sy4Y-w280-h280/oneplus-11r.webp" alt="Flexbox Image 1" />
+          vs
+          <img src="https://cdn1.smartprix.com/rx-iiPiwsnmt-w280-h280/apple-iphone-14-pro.webp" alt="Flexbox Image 1" />
+          <div class="break" id="btn">
+            <button type="button" class="btn btn-success" value = btn2>Compare</button>
+          </div>
+        </div>
+
+        <div class="col-md-4 flex-item">
+          <img src="front.jpg" alt="Flexbox Image 1" />
+          vs
+          <img src="front.jpg" alt="Flexbox Image 1" />
+          <div class="break" id="btn">
+            <button type="button" class="btn btn-success">Compare</button>
+          </div>
+
+        </div>
+        <div class="col-md-4 flex-item">
+          <img src="front.jpg" alt="Flexbox Image 1" />
+          vs
+          <img src="front.jpg" alt="Flexbox Image 1" />
+          <div class="break" id="btn">
+            <button type="button" class="btn btn-success">Compare</button>
+          </div>
+        </div>
+
+        <div class="col-md-4 flex-item">
+          <img src="front.jpg" alt="Flexbox Image 1" />
+          vs
+          <img src="front.jpg" alt="Flexbox Image 1" />
+
+          <div class="break" id="btn">
+            <button type="button" class="btn btn-success">Compare</button>
+          </div>
+        </div>
+
+        <div class="col-md-4 flex-item">
+          <img src="front.jpg" alt="Flexbox Image 1" />
+          vs
+          <img src="front.jpg" alt="Flexbox Image 1" />
+          <div class="break" id="btn">
+            <button type="button" class="btn btn-success">Compare</button>
+          </div>
         </div>
       </div>
-
-      <div class="col-md-4 flex-item">
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        vs
-        <img src="front.jpg" alt="Flexbox Image 1" />
-
-        <div class="break" id="btn">
-          <button type="button" class="btn btn-success">Compare</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 flex-item">
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        vs
-        <img src="front.jpg" alt="Flexbox Image 1" />
-        <div class="break" id="btn">
-          <button type="button" class="btn btn-success">Compare</button>
-        </div>
-      </div>
-    </div>
+    </form>
     
   </div>
-  <nav class="navbar navbar-default navbar-fixed-bottom bg-primary " role="navigation">
-    <div class="container text-center">
-        <p class="navbar-text col-md-12 col-sm-12 col-xs-12">&phone; contact</p>
+  <footer class="footer">
+    <div class="container">
+      <p>&phone; contact</p>
     </div>
-  </nav>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
     crossorigin="anonymous"></script>

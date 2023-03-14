@@ -115,7 +115,7 @@
                 }
 </script>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top " style="background-color: coral;"  >
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #385d8a;"  >
         <div class="container-fluid">
           <a class="navbar-brand" href="/dashboard">Phone Camera Comparision</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -145,7 +145,7 @@
         </div>
       </nav>
       
-      <div class="container-fluid">
+      <div class="container-fluid flex-wrap" style="padding: 2% 0px 10% 0px;" >
         <div class="row">
           <div class="col-md-6 col-lg-3">
             <div class="phone">
@@ -161,18 +161,18 @@
                 <li>Camera:</li>
                 <li>OS version:</li>
                 <li>Extra:</li>
-                <div class="box1">
+                <div class="box1" >
                   <img id="image" src="{{ url_for('static', filename='images/None.jpg') }}" name="Image_selected" />
                   <div class="select">
                     <form method="POST" action="/index">
                         <select id="dropdown" onchange="updatePage()">
-                            <option value="None">Select an image</option>
+                            <option value="none">Select an image</option>
                             <option value="image1">Front Image</option>
                             <option value="image2">Rear Image</option>
                         </select>
                         <input type="hidden" id="selected-image" name="selected-image" value="">
                         <form id="image-form" method="post" action="/select_image">
-                            <input id="image-input" type="hidden" name="image" value="">
+                            <input type="hidden" id="image-input" name="image" value="">
                         </form>
                     </form>
                   </div>
@@ -231,13 +231,14 @@
 
         </div>
       </div>        
-    <footer class="fixed-bottom">
-    <nav class="navbar navbar-default  bg-primary navbar-fixed-bottom " role="navigation">
-        <div class="container text-center">
-            <p class="navbar-text col-md-12 col-sm-12 col-xs-12">&phone; contact</p>
-        </div>
-      </nav>
+      <div class="fixed-bottom">
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>&phone; contact</p>
+      </div>
     </footer>
+  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

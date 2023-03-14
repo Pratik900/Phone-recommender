@@ -1,59 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about_style.css') }}">
-  </head>
-  <body>
-    <form method="post" action="{{url_for('index')}}">
-      <header>
-        <h1><nav><a href="/dashboard">Phone Camera Comparison</a></nav></h1>
-        <nav>
-          <ul>
-            <li><a href="/dashboard">Home</a></li>
-            <li><a href="/index">Comparision</a></li> 
-            <li><a href="#">About</a></li>
-            <li><a href="/logout">Log out</a></li>
-          </ul>
-        </nav>
-      </header>
-      <div class="container">
-        <h2 class="main">About us</h2>
-        <p align="justify">
-          Welcome to Phone Camera Comparison, your ultimate resource for
-          comparing and finding the best smartphone camera for your needs. Our
-          team of expert photographers and mobile technology enthusiasts are
-          passionate about helping you capture life's special moments in
-          stunning detail. With the rapid advancements in mobile camera
-          technology, it can be difficult to keep up with the latest releases
-          and features. That's why we created Phone Camera Comparison - to
-          simplify the process and help you make informed decisions.
-        </p>
-        <p align="justify">
-          We conduct thorough reviews and comparisons of the latest smartphone
-          cameras and their features. Our website provides unbiased and reliable
-          information about various aspects of phone cameras such as lens
-          quality, megapixels, optical image stabilization, low-light
-          performance, and more. We also provide user-friendly comparison tools
-          to help you quickly and easily compare different phone cameras
-          side-by-side. At Phone Camera Comparison, our ultimate goal is to help
-          you find the perfect smartphone camera that suits your needs and
-          budget.
-        </p>
-        <p align="justify">
-          We believe that everyone should have access to high-quality mobile
-          camera technology without breaking the bank. Follow us on social media
-          to stay updated on the latest trends and phone camera releases. Thank
-          you for choosing Phone Camera Comparison as your trusted source for
-          mobile camera reviews and comparisons.
-        </p>
-        <footer>
-          <p>&phone; Contact</p>
-        </footer>
-      </div>
-    </form>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about_style.css') }}">
+  <title>About</title>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#385d8a;">
+    <a class="navbar-brand" href="/dashboard">Phone Camera Comparision</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" style="color: white;">
+        <li class="nav-item ">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/index">Comparision <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container text-justify" class="main">
+    <br>
+    Welcome to Phone Camera Comparison, your ultimate resource for
+    comparing and finding the best smartphone camera for your needs. Our
+    team of expert photographers and mobile technology enthusiasts are
+    passionate about helping you capture life's special moments in
+    stunning detail. With the rapid advancements in mobile camera
+    technology, it can be difficult to keep up with the latest releases
+    and features. That's why we created Phone Camera Comparison - to
+    simplify the process and help you make informed decisions.
+  </p>
+  <p align="justify">
+    We conduct thorough reviews and comparisons of the latest smartphone
+    cameras and their features. Our website provides unbiased and reliable
+    information about various aspects of phone cameras such as lens
+    quality, megapixels, optical image stabilization, low-light
+    performance, and more. We also provide user-friendly comparison tools
+    to help you quickly and easily compare different phone cameras
+    side-by-side. At Phone Camera Comparison, our ultimate goal is to help
+    you find the perfect smartphone camera that suits your needs and
+    budget.
+  </p>
+  <p align="justify">
+    We believe that everyone should have access to high-quality mobile
+    camera technology without breaking the bank. Follow us on social media
+    to stay updated on the latest trends and phone camera releases. Thank
+    you for choosing Phone Camera Comparison as your trusted source for
+    mobile camera reviews and comparisons.
+    <br>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <p>&phone; contact</p>
+    </div>
+  </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
+</html>
+</body>
 </html>

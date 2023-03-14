@@ -1,62 +1,80 @@
-
 .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 30%;
 
 }
 
 .flex-item {
-    width: 50%;
-    height: 100%;
-    margin: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    align-items: center;
-    border-color: black;
+  width: 50%;
+  height: 100%;
+  margin: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: center;
+  border-color: black;
 
 
 }
 
 .flex-item img {
-    width: 30%;
-    height: 50%;
-    object-fit: fill;
+  width: 30%;
+  height: 50%;
+  object-fit: fill;
 }
-#search{
-    width: auto;
+
+#search {
+  width: auto;
 }
-.btn{
-    border-radius: 1px;
-    margin-left: 10px;
-    height: 10%;
-    border-radius: 70px;
-    
+
+.btn {
+  border-radius: 1px;
+  margin-left: 10px;
+  height: 10%;
+  border-radius: 70px;
+
 }
-#btn{
+
+#btn {
   padding-top: 5%;
 }
-    /* Media queries for adjusting the layout */
-    @media (max-width: 991px) {
-        .flex-container {
-          flex-wrap: wrap;
-        }
-        .flex-item {
-          flex-basis: 70%;
-          max-width: 70%;
-        }
-      }
-      @media (max-width: 767px) {
-        .flex-item {
-          flex-basis: 100%;
-          max-width: 100%;
-        }
-      }
 
+/* .phone_name {
+  position: absolute;
+} */
 
+.footer {
+  position: absolute;
+  bottom: 1;
+  width: 100%;
+  height: 4%;
+  background: #385d8a;
+  border-top: solid 1px #0e0e0e;
+  color: white;
+}
 
+footer p {
+  text-align: center;
+}
 
+/* Media queries for adjusting the layout */
+@media (max-width: 991px) {
+  .flex-container {
+    flex-wrap: wrap;
+  }
 
+  .flex-item {
+    flex-basis: 70%;
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 767px) {
+  .flex-item {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}

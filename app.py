@@ -22,14 +22,17 @@ class User(UserMixin):
         user = cls(row[0], row[1]) if row else None
         conn.close()
         return user
+    
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
 
+
 @app.route('/')
 def index():
     return render_template('login.html')
+
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -50,6 +53,7 @@ def register():
             return redirect('register')
     return render_template('register.html')
 
+
 @app.route('/', methods=['POST'])
 def login():
     if request.method == 'POST':
@@ -68,12 +72,12 @@ def login():
             return render_template('login.html')
     else:
         return render_template('login.html')
+    
 
 @app.route('/dashboard', methods = ['POST','GET'])
 @login_required
 def dashboard():
     return render_template('dashboard.html')
-
 
 
 @app.route('/index', methods=['POST','GET'])
