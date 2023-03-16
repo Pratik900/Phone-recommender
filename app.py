@@ -90,6 +90,22 @@ def home():
     conn.close()
     return render_template('index.html', dropdown_data=dropdown_data)
 
+@app.route('/compare', methods=['POST'])
+def compare():
+    phone1_name = 'OnePlus 11R'
+    phone2_name = 'Samsung Galaxy S23'
+    # Check which button was pressed
+    b = request.form.get('compare-btn')
+    print(b)
+    # Render a template with the phone names
+    return render_template('dashboard.html', phone1_name=phone1_name, phone2_name=phone2_name)
+
+@app.route('/selected-image', methods=['POST'])
+def selected_image():
+    img = request.form.get('image')
+    print(img)
+
+
 
 @app.route('/get_row_data', methods=['POST'])
 def get_row_data():

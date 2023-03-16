@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_style.css') }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<style>
+
+  </style>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #385d8a;"  >
@@ -39,67 +42,105 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <form method = "POST" action="/compare" >
+    <form method="POST" action="/compare" name="phone-form">
       <div class="row flex-container">
 
-        <div class="col-md-4 flex-item ">
-          <img src="https://cdn1.smartprix.com/rx-izLSMVlI0-w280-h280/samsung-galaxy-s23-u.webp" alt="Flexbox Image 1" />
-          vs
-          <img src="{{ url_for('static', filename='images/dual.jpg') }}"alt="Flexbox Image 1" />
-          <br>
-          <div class="phone_name">
-            OnePlus 11R OnePlus 11R
-          </div>
-          <div class="break" id="btn">
-            <button type="button" class="btn btn-success" value="btn1">Compare</button>
-          </div>
-        </div>
-
         <div class="col-md-4 flex-item">
-          <img src="https://cdn1.smartprix.com/rx-iTWs9Sy4Y-w280-h280/oneplus-11r.webp" alt="Flexbox Image 1" />
-          vs
-          <img src="https://cdn1.smartprix.com/rx-iiPiwsnmt-w280-h280/apple-iphone-14-pro.webp" alt="Flexbox Image 1" />
+          <div class="d-flex justify-content-around align-items-center mb-2">
+            <img src="https://cdn1.smartprix.com/rx-iH3muFHfz-w280-h280/oneplus-7-8gb-ram-25.webp" alt="Flexbox Image 1" />
+            <span class="vs">vs</span>
+            <img src="https://cdn1.smartprix.com/rx-ijULh2d9g-w280-h280/oppo-reno-2.webp" alt="Flexbox Image 1" />
+          </div>
+          <div class="d-flex justify-content-around mb-2">
+            <div class="p-2 flex-fill phone-name">OnePlus 7</div>
+            <div class="p-2 flex-fill phone-name"> </div>
+            <div class="p-2 flex-fill phone-name">Oppo Reno 2</div>
+          </div>
           <div class="break" id="btn">
-            <button type="button" class="btn btn-success" value = btn2>Compare</button>
+              <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn1">Compare</button>
           </div>
         </div>
-
+      
         <div class="col-md-4 flex-item">
-          <img src="front.jpg" alt="Flexbox Image 1" />
-          vs
-          <img src="front.jpg" alt="Flexbox Image 1" />
-          <div class="break" id="btn">
-            <button type="button" class="btn btn-success">Compare</button>
+          <div class="d-flex justify-content-around align-items-center mb-2">
+            <img src="https://cdn1.smartprix.com/rx-ispXKz5Yn-w280-h280/realme-8i-6gb-ram-12.webp" alt="Flexbox Image 1" />
+            <span class="vs">vs</span>
+            <img src="https://cdn1.smartprix.com/rx-iFqV4u3Qa-w280-h280/xiaomi-redmi-k30.webp" alt="Flexbox Image 1" />
           </div>
-
-        </div>
-        <div class="col-md-4 flex-item">
-          <img src="front.jpg" alt="Flexbox Image 1" />
-          vs
-          <img src="front.jpg" alt="Flexbox Image 1" />
+          <div class="d-flex justify-content-around mb-2">
+            <div class="p-2 flex-fill phone-name">Realme 8i</div>
+            <div class="p-2 flex-fill phone-name"> </div>
+            <div class="p-2 flex-fill phone-name">Xiaomi Redmi k30</div>
+          </div>
           <div class="break" id="btn">
-            <button type="button" class="btn btn-success">Compare</button>
+              <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn2">Compare</button>
           </div>
         </div>
 
-        <div class="col-md-4 flex-item">
-          <img src="front.jpg" alt="Flexbox Image 1" />
-          vs
-          <img src="front.jpg" alt="Flexbox Image 1" />
-
-          <div class="break" id="btn">
-            <button type="button" class="btn btn-success">Compare</button>
+          <div class="col-md-4 flex-item">
+            <div class="d-flex justify-content-around align-items-center mb-2">
+              <img src="https://cdn1.smartprix.com/rx-iukoaruZz-w280-h280/motorola-moto-g30.webp" alt="Flexbox Image 1" />
+              <span class="vs">vs</span>
+              <img src="https://cdn1.smartprix.com/rx-igAvq7Z0m-w280-h280/realme-6i.webp" alt="Flexbox Image 1" />
+            </div>
+            <div class="d-flex justify-content-around mb-2">
+              <div class="p-2 flex-fill phone-name">Motorola Moto G30</div>
+              <div class="p-2 flex-fill phone-name"> </div>
+              <div class="p-2 flex-fill phone-name">Realme 6i</div>
+            </div>
+            <div class="break" id="btn">
+              <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn3">Compare</button>
+            </div>
           </div>
-        </div>
+        
 
-        <div class="col-md-4 flex-item">
-          <img src="front.jpg" alt="Flexbox Image 1" />
-          vs
-          <img src="front.jpg" alt="Flexbox Image 1" />
-          <div class="break" id="btn">
-            <button type="button" class="btn btn-success">Compare</button>
+          <div class="col-md-4 flex-item">
+            <div class="d-flex justify-content-around align-items-center mb-2">
+              <img src="https://cdn1.smartprix.com/rx-imI0GMKgu-w280-h280/samsung-galaxy-m51.webp" alt="Flexbox Image 1" />
+              <span class="vs">vs</span>
+              <img src="https://cdn1.smartprix.com/rx-i7OsopWs6-w280-h280/xiaomi-mi-8-lite-4gb.webp" alt="Flexbox Image 1" />
+            </div>
+            <div class="d-flex justify-content-around mb-2">
+              <div class="p-2 flex-fill phone-name">Samsung Galaxy M51</div>
+              <div class="p-2 flex-fill phone-name"> </div>
+              <div class="p-2 flex-fill phone-name">Xiaomi mi 8 Lite</div>
+            </div>
+            <div class="break" id="btn">
+                <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn4">Compare</button>
+            </div>
           </div>
-        </div>
+
+          <div class="col-md-4 flex-item">
+            <div class="d-flex justify-content-around align-items-center mb-2">
+              <img src="https://cdn1.smartprix.com/rx-ioLedjrMc-w280-h280/asus-rog-phone-3-12g.webp" alt="Flexbox Image 1" />
+              <span class="vs">vs</span>
+              <img src="https://cdn1.smartprix.com/rx-iEUlsfiIk-w280-h280/samsung-galaxy-note.webp" alt="Flexbox Image 1" />
+            </div>
+            <div class="d-flex justify-content-around mb-2">
+              <div class="p-2 flex-fill phone-name">Asus Rog</div>
+              <div class="p-2 flex-fill phone-name"> </div>
+              <div class="p-2 flex-fill phone-name">Samsung Galaxy Note</div>
+            </div>
+            <div class="break" id="btn">
+                <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn5">Compare</button>
+            </div>
+          </div>
+
+          <div class="col-md-4 flex-item">
+            <div class="d-flex justify-content-around align-items-center mb-2">
+              <img src="https://cdn1.smartprix.com/rx-iJQaIGe8O-w280-h280/huawei-honor-9x-pro.webp" alt="Huawei Honor 9x Pro" />
+              <span class="vs">vs</span>
+              <img src="https://cdn1.smartprix.com/rx-imTnMR5Zq-w280-h280/xiaomi-redmi-9t.webp" alt="Xiaomi Redmi 9t" />
+            </div>
+            <div class="d-flex justify-content-around mb-2">
+              <div class="p-2 flex-fill phone-name">Huawei Honor 9x Pro</div>
+              <div class="p-2 flex-fill phone-name"> </div>
+              <div class="p-2 flex-fill phone-name">Xiaomi Mi Redmi 9t</div>
+            </div>
+            <div class="break" id="btn">
+              <button type="submit" class="btn btn-success compare-btn" id="compare-btn-1" name="compare-btn" value="btn6">Compare</button>
+            </div>
+          </div>
       </div>
     </form>
     

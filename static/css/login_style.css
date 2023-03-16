@@ -2,7 +2,7 @@ body {
 	font-family: Arial, sans-serif;
 }
 .bg{
-    background-image: -webkit-linear-gradient(top left,#385d8a,#f5eee1);
+    background-image: -webkit-linear-gradient(top ,#385d8a,#ece2cf);
     /* background-image: url('../images/login_bg.jpg'); */
     background-repeat: no-repeat;
     background-position: center center;
