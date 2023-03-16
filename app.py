@@ -22,7 +22,7 @@ class User(UserMixin):
         user = cls(row[0], row[1]) if row else None
         conn.close()
         return user
-    
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -83,12 +83,18 @@ def dashboard():
 @app.route('/index', methods=['POST','GET'])
 @login_required
 def home():
+    row_data = []
     conn = sqlite3.connect('.\database\database.db')
     cursor = conn.cursor()
     cursor.execute('SELECT \ufeffPhone_name FROM phone')
     dropdown_data = cursor.fetchall()
+    print("data")
+    print(row_data)
     conn.close()
-    return render_template('index.html', dropdown_data=dropdown_data)
+    if dropdown_data is None:
+        row_data = ["1"]
+        print(row_data)
+    return render_template('index.html', dropdown_data=dropdown_data,row_data=row_data)
 
 @app.route('/compare', methods=['POST'])
 def compare():
@@ -112,6 +118,7 @@ def get_row_data():
     conn = sqlite3.connect('.\database\database.db')
     cursor = conn.cursor()
     selected_value = request.form['selected_value']
+    print(selected_value)
     cursor.execute("SELECT * FROM phone WHERE  \ufeffPhone_name = ?", (selected_value,))
     row_data = cursor.fetchone()
     response = {'column1': row_data[0], 'column2': row_data[1], 'column3': row_data[2], 'column4': row_data[3], 'column5': row_data[5],
