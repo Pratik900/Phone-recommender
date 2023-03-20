@@ -83,18 +83,12 @@ def dashboard():
 @app.route('/index', methods=['POST','GET'])
 @login_required
 def home():
-    row_data = []
     conn = sqlite3.connect('.\database\database.db')
     cursor = conn.cursor()
     cursor.execute('SELECT \ufeffPhone_name FROM phone')
     dropdown_data = cursor.fetchall()
-    print("data")
-    print(row_data)
     conn.close()
-    if dropdown_data is None:
-        row_data = ["1"]
-        print(row_data)
-    return render_template('index.html', dropdown_data=dropdown_data,row_data=row_data)
+    return render_template('index.html', dropdown_data=dropdown_data)
 
 @app.route('/compare', methods=['POST'])
 def compare():
@@ -106,11 +100,16 @@ def compare():
     # Render a template with the phone names
     return render_template('dashboard.html', phone1_name=phone1_name, phone2_name=phone2_name)
 
-@app.route('/selected-image', methods=['POST'])
-def selected_image():
-    img = request.form.get('image')
-    print(img)
+dummy_data = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape']
 
+@app.route('/autocomplete')
+def autocomplete():
+    search = request.args.get('search')
+    results = []
+    for data in dummy_data:
+        if search.lower() in data.lower():
+            results.append(data)
+    return {'results': results}
 
 
 @app.route('/get_row_data', methods=['POST'])
