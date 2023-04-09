@@ -79,6 +79,11 @@ def login():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/compare', methods = ['POST','GET'])
+@login_required
+def comp():
+    return render_template('compare.html')
+
 
 @app.route('/index', methods=['POST','GET'])
 @login_required

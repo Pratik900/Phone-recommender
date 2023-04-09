@@ -11,7 +11,7 @@
 <body>
   <nav class="navbar navbar-expand-xl navbar-dark sticky-top " style="background-color: #385d8a;"  >
     <div class="container-fluid">
-      <a class="navbar-brand" href="/dashboard"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Error" id="logo"></a>
+      <a class="navbar-brand" href="/dashboard"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Smartphone Camera Comparision" id="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,6 +27,9 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link " href="/index">Comparision</a>
+          </li> 
+          <li class="nav-item ">
+            <a class="nav-link " href="/compare">comp</a>
           </li> 
           <li class="nav-item ">
             <a class="nav-link " href="/index/about">About</a>
@@ -48,8 +51,6 @@
             <span class="vs">vs</span>
             <img src="https://cdn1.smartprix.com/rx-ijULh2d9g-w280-h280/oppo-reno-2.webp" alt="Flexbox Image 1" />
           </div>
-          <div><label class="tick">Samsung <input type="checkbox" checked="checked"> <span class="check"></span></label></div>
-          <div><label class="tick">10000<input type="checkbox" checked="checked"> <span class="check"></span></label></div>
           <div class="d-flex justify-content-around mb-2" id="flex_hover">
             <div class="p-2 flex-fill phone-name">OnePlus 7</div>
             <div class="p-2 flex-fill phone-name"> </div>
