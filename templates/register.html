@@ -1,123 +1,93 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sign Up</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='css/register_style.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-	<link
-	rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
- 	/>
-  </head>
-  <body class="bg">
-    <div class="container">
-      <form method="post" action="/register" class="container mt-5">
-		<div class="card p-5">
-			<h1 class="mb-4">Sign up</h1>
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-				  <span class="input-group-text"><i class="fa fa-user"></i></span>
-					</div>
-					<input
-					type="text"
-					name="username"
-					class="form-control"
-					placeholder="Username"
-					/>
-			  </div>
-			  <div class="input-group mb-3">
-				<div class="input-group-prepend">
-				  <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-					</div>
-					<input
-					type="text"
-					name="email"
-					class="form-control"
-					placeholder="email" required
-					/>
-			  </div>
-			  <div class="input-group mb-3">
-				<div class="input-group-prepend">
-				  <span class="input-group-text"><i class="fa fa-key"></i></span>
-				</div>
-				<input
-				  type="password"
-				  name="password"
-				  class="form-control"
-				  placeholder="Password"
-				  id="myInput"/>
-				<div class="input-group-append">
-				  <span class="input-group-text" onclick="myFunction()">
-					<i id="hide1" class="fa fa-eye"></i>
-					<i id="hide2" class="fa fa-eye-slash"></i>
-				  </span>
-				</div>
-			  </div>
+   	 	<title>Sign Up</title>
+   		 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register_style.css') }}"/> 
+		 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+     </head>
+  	<body class="bg">
+   		<div class="container">
+      		<form method="post" action="/register" class="container mt-5">
+				<div class="card p-5" class="rinku">
+					<h1 class="mb-4">Sign up</h1>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+				 		 	<span class="input-group-text"><i class="fa fa-user"></i></span>
+						</div>
+						<input type="text" name="username" class="form-control" placeholder="Username" />
+			  		</div>
+			  		<div class="input-group mb-3">
+						<div class="input-group-prepend">
+				  			<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+						</div>
+						<input type="text" name="email" class="form-control" placeholder="email" required />
+			  		</div>
+			 		<div class="input-group mb-3">
+						<div class="input-group-prepend">
+				  			<span class="input-group-text"><i class="fa fa-key"></i></span>
+						</div>
+						<input type="password" name="password" class="form-control" placeholder="Password" id="myInput"/>
+						<div class="input-group-append">
+				 	 		<span class="input-group-text" onclick="myFunction()">
+								<i id="hide1" class="fa fa-eye"></i>
+								<i id="hide2" class="fa fa-eye-slash"></i>
+				 			</span>
+						</div>
+			 		</div>
 
-			  <div class="input-group mb-3">
-				<div class="input-group-prepend">
-				  <span class="input-group-text"><i class="fa fa-key"></i></span>
-				</div>
-				<input
-				  type="password"
-				  name="Confirm_password"
-				  class="form-control"
-				  placeholder="Confirm password"
-				  id="myInput_1"/>
-				<div class="input-group-append">
-				  <span class="input-group-text" onclick="myFunction_1()">
-					<i id="hide" class="fa fa-eye"></i>
-					<i id="hides" class="fa fa-eye-slash"></i>
-				  </span>
-				</div>
-			  </div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+				  			<span class="input-group-text"><i class="fa fa-key"></i></span>
+						</div>
+						<input type="password"  name="Confirm_password" class="form-control" placeholder="Confirm password" id="myInput_1"/>
+						<div class="input-group-append">
+				  			<span class="input-group-text" onclick="myFunction_1()">
+								<i id="hide" class="fa fa-eye"></i>
+								<i id="hides" class="fa fa-eye-slash"></i>
+				  			</span>
+						</div>
+			 	 	</div>
 
-			  <input type="submit" value="Sign Up" class="btn btn-primary btn-block"/>
-			<p class="para-2">
-				Already have an account?
-				<a href="{{url_for('login')}}"> Login here</a>
-			</p>
-		</div>
-      </form>
-    </div>
-    <script>
-		function myFunction() {
-		  var x = document.getElementById("myInput");
-		  var y = document.getElementById("hide1");
-		  var z = document.getElementById("hide2");
+			 	 	<input type="submit" value="Sign Up" class="btn btn-primary btn-block"/>
+						<p class="para-2">
+							Already have an account?
+							<a href="{{url_for('login')}}"> Login here</a>
+						</p>
+				</div>
+     		</form>
+    	</div>
+    	<script>
+			function myFunction() {
+		  	var x = document.getElementById("myInput");
+		  	var y = document.getElementById("hide1");
+		 	 var z = document.getElementById("hide2");
   
-		  if (x.type === "password") {
-			x.type = "text";
-			y.style.display = "block";
-			z.style.display = "none";
-		  } else {
-			x.type = "password";
-			y.style.display = "none";
-			z.style.display = "block";
-		  }
-		}
-		function myFunction_1() {
-		  var x = document.getElementById("myInput_1");
-		  var y = document.getElementById("hide");
-		  var z = document.getElementById("hides");
-  
-		  if (x.type === "password") {
-			x.type = "text";
-			y.style.display = "block";
-			z.style.display = "none";
-		  } else {
-			x.type = "password";
-			y.style.display = "none";
-			z.style.display = "block";
-		  }
-		}
-	  </script>
-  </body>
+		  	if (x.type === "password") {
+				x.type = "text";
+				y.style.display = "block";
+				z.style.display = "none";
+		  	} else {
+				x.type = "password";
+				y.style.display = "none";
+				z.style.display = "block";
+		  	}
+			}
+			function myFunction_1() {
+		  		var x = document.getElementById("myInput_1");
+		  		var y = document.getElementById("hide");
+		  		var z = document.getElementById("hides");
+				
+		  	if (x.type === "password") {
+				x.type = "text";
+				y.style.display = "block";
+				z.style.display = "none";
+		  	} else {
+				x.type = "password";
+				y.style.display = "none";
+				z.style.display = "block";
+		 	 }
+			}
+	  	</script>
+  	</body>
 </html>

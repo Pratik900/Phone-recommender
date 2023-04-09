@@ -28,3 +28,19 @@ nav ul li a {
         padding: 2% 0;
     }
 }
+
+@media (max-width: 767px) {
+    #logo{
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+    #logo{
+      width: 40%;
+      height: 10%;
+      object-fit: cover;
+  
+    }
+  }
+  #logo{
+    height: 60px;
+  }

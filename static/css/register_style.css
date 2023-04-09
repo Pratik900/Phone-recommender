@@ -9,17 +9,13 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-/* 
-.container {
-	margin: auto;
-    background-color: #ffffff;
-    max-width: 500px;
-    margin: 110px auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-} */
 
+ /* .container {
+    width: 100%;
+}   */
+.rinku{
+    width: 100px;
+}
 
 h1 {
 	text-align: center;
@@ -28,6 +24,7 @@ h1 {
 form {
 	display: flex;
 	flex-direction: column;
+    
 }
 
 label {
@@ -36,7 +33,7 @@ label {
 
 input[type=text], input[type=email], input[type=password] {
     display: block;
-    width: 95%;
+    width: 50%;
     padding: 10px;
     margin-bottom: 20px;
     border: none;
@@ -46,7 +43,7 @@ input[type=text], input[type=email], input[type=password] {
 
 input[type=submit] {
 	display: block;
-    width: 99%;
+    width: 50%;
     padding: 10px;
     background-color: #4CAF50;
     color: #fff;

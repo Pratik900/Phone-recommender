@@ -7,13 +7,13 @@ from matplotlib import pyplot as plt
 from skimage.metrics import structural_similarity as ssim
 
 # Load the image
-img = cv2.imread('front.jpg')
+img = cv2.imread('./static/images/front.jpg')
 img = cv2.resize(img,(450,600))
 
 # Camera Parameters
 shutter_speed = 1/65
 iso = 50
-f_stop = 8
+f_stop = 4
 
 # Calculate the factor by which to scale the image's brightness
 brightness_factor = 1 / (2 ** ((iso - 100) / 100))
