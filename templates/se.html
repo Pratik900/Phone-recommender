@@ -60,7 +60,7 @@
                   <div> <label class="tick">Nothing <input type="checkbox"> <span class="check"></span> </label> </div>
                   <div> <label class="tick">OnePlus <input type="checkbox"> <span class="check"></span> </label> </div>
                   <div> <label class="tick">Oppo <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Real me <input type="checkbox"> <span class="check"></span> </label> </div>
+                  <div> <label class="tick">Realme <input type="checkbox"> <span class="check"></span> </label> </div>
                   <div> <label class="tick">Samsung <input type="checkbox"> <span class="check"></span> </label> </div>
                   <div> <label class="tick">Redmi <input type="checkbox"> <span class="check"></span> </label> </div>
                   <div> <label class="tick">Vivo <input type="checkbox"> <span class="check"></span> </label> </div>
@@ -88,48 +88,54 @@
                       <form action="{{ url_for('Auto_search') }}">
                         <div class="input-group" id="search">
                           <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-box" name="q" />
-                          <button type="submit" id="serach-button"class="btn btn-success">Search</button>
+                          <button type="button" id="search-button1"class="btn btn-success">Search</button>
                         </div>
                       </form>
                       <div class="card d-flex flex-column align-items-center">
+                        <div id="phone_1"></div>
+                        <div id="result">
                           {{result.column1}}
                           <img src="{{result.column2}}" alt="">
-                          
                           <li>{{result.column3}}</li>
                           <li>{{result.column4}}</li>
                           <li>{{result.column5}}</li>
+                        </div>
                       </div>
                   </div>
                   <div class="col-lg-4 col-md-6 pt-md-0 pt-3">
-                    <form action="{{ url_for('Auto_search') }}">
-                      <div class="input-group" id="search">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-box" name="q" />
-                        <button type="submit" id="serach-button"class="btn btn-success">Search</button>
+                    <form action="{{ url_for('Auto_search_1') }}">
+                      <div class="input-group" id="search1">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-box1" name="w" />
+                        <button type="button" id="search-button2"class="btn btn-success">Search</button>
                       </div>
                     </form>
                     <div class="card d-flex flex-column align-items-center">
+                      <div id="phone_2"></div>
+                      <div id="res_1">
                         {{res_1.column1}}
                         <img src="{{res_1.column2}}" alt="">
-                        
                         <li>{{res_1.column3}}</li>
                         <li>{{res_1.column4}}</li>
                         <li>{{res_1.column5}}</li>
+                      </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-6 pt-lg-0 pt-md-4 pt-3">
-                    <form action="{{ url_for('Auto_search') }}">
-                      <div class="input-group" id="search">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-box" name="q" />
-                        <button type="submit" id="serach-button"class="btn btn-success">Search</button>
+                    <form action="{{ url_for('Auto_search_2') }}">
+                      <div class="input-group" id="search2">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="search-box2" name="e" />
+                        <button type="button" id="search-button3"class="btn btn-success">Search</button>
                       </div>
                     </form>
                     <div class="card d-flex flex-column align-items-center">
+                      <div id="phone_3"></div>
+                      <div id="res_2">
                         {{res_2.column1}}
                         <img src="{{res_2.column2}}" alt="">
-                        
                         <li>{{res_2.column3}}</li>
                         <li>{{res_2.column4}}</li>
                         <li>{{res_2.column5}}</li>
+                      </div>
                     </div>
                   </div>
               </div>
@@ -148,7 +154,59 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
+    <script>
+            $(document).ready(function() {
+        $('#search-button3').click(function() {
+          var query2 = $('#search-box2').val();
+          $.ajax({
+            url: '/Auto_search_2?e=' + query2,
+            type: 'GET',
+            success: function(phone_3) {
+              $('#phone_3').html(phone_3.column1 + ' ' + phone_3.column2);
+              const phone3 = document.getElementById("phone_3").textContent.trim();
+              if (phone3 !== "") {
+              document.getElementById("res_2").style.display = "none";
+            }
+            }
+          });
+        });
+      });
 
+      $(document).ready(function() {
+        $('#search-button2').click(function() {
+          var query1 = $('#search-box1').val();
+          $.ajax({
+            url: '/Auto_search_1?w=' + query1,
+            type: 'GET',
+            success: function(phone_2) {
+              $('#phone_2').html(phone_2.column1 + ' ' + phone_2.column2);
+              const phone2 = document.getElementById("phone_2").textContent.trim();
+              if (phone2 !== "") {
+              document.getElementById("res_1").style.display = "none";
+            }
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function() {
+        $('#search-button1').click(function() {
+          var query = $('#search-box').val();
+          $.ajax({
+            url: '/Auto_search?q=' + query,
+            type: 'GET',
+            success: function(phone_1) {
+              $('#phone_1').html(phone_1.column1 + ' ' + phone_1.column2);
+              const phone1 = document.getElementById("phone_1").textContent.trim();
+              if (phone1 !== "") {
+              document.getElementById("result").style.display = "none";
+            }
+            }
+          });
+        });
+      });
+    </script>
     <script>
         $(function() {
         $('#search-box').autocomplete({
@@ -168,7 +226,43 @@
             window.location.href = '/Auto_search?q=' + query;
         });
         });
-    </script>
+          $(function() {
+          $('#search-box1').autocomplete({
+              source: function(request, response) {
+              $.getJSON('/autocomplete', {
+                  term: request.term
+              }, function(data) {
+                  response(data);
+              });
+              },
+              minLength: 2
+          });
+          
+          $('#search-form').submit(function(e) {
+              e.preventDefault();
+              var query = $('#search-box1').val();
+              window.location.href = '/Auto_search?w=' + query;
+          });
+          });
+          $(function() {
+          $('#search-box2').autocomplete({
+              source: function(request, response) {
+              $.getJSON('/autocomplete', {
+                  term: request.term
+              }, function(data) {
+                  response(data);
+              });
+              },
+              minLength: 2
+          });
+          
+          $('#search-form').submit(function(e) {
+              e.preventDefault();
+              var query = $('#search-box2').val();
+              window.location.href = '/Auto_search?e=' + query;
+          });
+          });
+      </script>
 </body>
 
 </html>

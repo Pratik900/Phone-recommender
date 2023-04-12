@@ -96,27 +96,6 @@ def home():
 def comp():
     return render_template('compare.html')
 
-@app.route('/se', methods = ['POST','GET'])
-@login_required
-def se():
-    conn = sqlite3.connect('.\database\database.db')
-    c = conn.cursor()
-    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 10T ",))
-    rows = c.fetchone()   
-    result = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
-                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
-    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 7 ",))
-    rows = c.fetchone()   
-    res_1 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
-                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
-    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "Realme 8i ",))
-    rows = c.fetchone()   
-    res_2 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
-                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
-    
-    return render_template('se.html',result=result,res_1=res_1,res_2=res_2)
-
-
 
 @app.route('/autocomplete')
 def autocomplete():
@@ -144,6 +123,46 @@ def search():
                  'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
     return render_template('search.html', results=results)
 
+@app.route('/se', methods=['POST', 'GET'])
+@login_required
+def se():
+    phone1_name = request.args.get('phone1_name')
+    phone2_name = request.args.get('phone2_name')
+    print(phone1_name,phone2_name)
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    if phone1_name:
+        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + phone1_name + '%',))
+        rows = c.fetchone()   
+        result = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    else:
+        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 7 Pro ",))
+        rows = c.fetchone()   
+        result = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+
+    if phone2_name:
+        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + phone2_name + '%',))
+        rows = c.fetchone()   
+        res_1 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    else:
+        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 10T ",))
+        rows = c.fetchone()   
+        res_1 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+
+    if not phone1_name:
+        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 7 ",))
+        rows = c.fetchone()   
+        res_2 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    else:
+        res_2 = None
+        
+    return render_template("se.html",result=result,res_1=res_1,res_2=res_2)
+
 @app.route('/Auto_search')
 def Auto_search():
     query = request.args.get('q', '')
@@ -152,23 +171,42 @@ def Auto_search():
     c = conn.cursor()
     c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
     rows = c.fetchone()   
-    result = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+    phone_1 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
                  'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
-    print(result)
-    res_1 = "yes"
-    res_2 = "not_yes"
-    return render_template('se.html', result=result,res_1=res_1,res_2=res_2)
+    print(phone_1)
+    return jsonify(phone_1)
 
+@app.route('/Auto_search_1')
+def Auto_search_1():
+    query1 = request.args.get('w', '')
+    phone_2 = []
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query1 + '%',))
+    rows = c.fetchone()   
+    phone_2 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    print(phone_2)
+    return jsonify(phone_2)
 
-@app.route('/compare', methods=['POST'])
-def compare():
-    phone1_name = 'OnePlus 11R'
-    phone2_name = 'Samsung Galaxy S23'
-    # Check which button was pressed
-    b = request.form.get('compare-btn')
-    print(b)
-    # Render a template with the phone names
-    return render_template('dashboard.html', phone1_name=phone1_name, phone2_name=phone2_name)
+@app.route('/Auto_search_2')
+def Auto_search_2():
+    query2 = request.args.get('e', '')
+    phone_3 = []
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query2 + '%',))
+    rows = c.fetchone()   
+    phone_3 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    print(phone_3)
+    return jsonify(phone_3)
+
+@app.route('/compare/<phone1_name>/<phone2_name>', methods=['POST'])
+def compare(phone1_name, phone2_name):
+    if request.method == 'POST':
+        b = request.form.get('compare-btn')
+        return redirect(url_for('se', phone1_name=phone1_name, phone2_name=phone2_name))
 
 
 @app.route('/get_row_data', methods=['POST'])
@@ -183,36 +221,6 @@ def get_row_data():
                  'column6': row_data[6], 'column7': row_data[7], 'column8': row_data[8], 'column9': row_data[9], 'column10': row_data[10], 'column11': row_data[11]}
     print(response)
     return jsonify(response)
-
-
-@app.route('/get_row_data_2', methods=['POST'])
-def get_row_data_2():
-        conn = sqlite3.connect('.\database\database.db')
-        cursor = conn.cursor()
-        selected_value_2 = request.form['selected_value_2']
-        print(selected_value_2)
-        cursor.execute("SELECT * FROM phone WHERE  \ufeffPhone_name = ?", (selected_value_2,))
-        row_data_2 = cursor.fetchone()
-        response_2 = {'column_1': row_data_2[0], 'column_2': row_data_2[1], 'column_3': row_data_2[2], 'column_4': row_data_2[3], 'column_5': row_data_2[5],
-                 'column_6': row_data_2[6], 'column_7': row_data_2[7], 'column_8': row_data_2[8], 'column_9': row_data_2[9], 'column_10': row_data_2[10], 
-                 'column_11': row_data_2[11]}
-        return jsonify(response_2)
-
-
-
-@app.route('/get_row_data_3', methods=['POST'])
-def get_row_data_3():
-        conn = sqlite3.connect('.\database\database.db')
-        cursor = conn.cursor()
-        selected_value_3 = request.form['selected_value_3']
-        print(selected_value_3)
-        cursor.execute("SELECT * FROM phone WHERE  \ufeffPhone_name = ?", (selected_value_3,))
-        row_data_2 = cursor.fetchone()
-        response_3 = {'column_1': row_data_2[0], 'column_2': row_data_2[1], 'column_3': row_data_2[2], 'column_4': row_data_2[3], 'column_5': row_data_2[5],
-                 'column_6': row_data_2[6], 'column_7': row_data_2[7], 'column_8': row_data_2[8], 'column_9': row_data_2[9], 'column_10': row_data_2[10], 
-                 'column_11': row_data_2[11]}
-        return jsonify(response_3)
-
 
 @app.route('/index/about')
 @login_required

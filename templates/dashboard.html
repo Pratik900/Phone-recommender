@@ -50,7 +50,7 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <form method="POST" action="/compare" name="phone-form">
+    <form method="POST" action="/compare" name="phone-form" id="phone-form">
       <div class="row flex-container">
 
         <div class="col-md-4 flex-item">
@@ -81,7 +81,7 @@
             <div class="p-2 flex-fill phone-name">Xiaomi Redmi k30</div>
           </div>
           <div class="break" id="btn">
-              <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn2">Compare</button>
+              <button type="submit" class="btn btn-success" id="compare-btn-2" name="compare-btn" value="btn2">Compare</button>
           </div>
         </div>
 
@@ -97,10 +97,9 @@
               <div class="p-2 flex-fill phone-name">Realme 6i</div>
             </div>
             <div class="break" id="btn">
-              <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn3">Compare</button>
+              <button type="submit" class="btn btn-success" id="compare-btn-3" name="compare-btn" value="btn3">Compare</button>
             </div>
           </div>
-        
 
           <div class="col-md-4 flex-item">
             <div class="d-flex justify-content-around align-items-center mb-2">
@@ -114,7 +113,7 @@
               <div class="p-2 flex-fill phone-name">Xiaomi mi 8 Lite</div>
             </div>
             <div class="break" id="btn">
-                <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn4">Compare</button>
+                <button type="submit" class="btn btn-success" id="compare-btn-4" name="compare-btn" value="btn4">Compare</button>
             </div>
           </div>
 
@@ -125,12 +124,12 @@
               <img src="https://cdn1.smartprix.com/rx-iEUlsfiIk-w280-h280/samsung-galaxy-note.webp" alt="Flexbox Image 1" />
             </div>
             <div class="d-flex justify-content-around mb-2">
-              <div class="p-2 flex-fill phone-name">Asus Rog</div>
+              <div class="p-2 flex-fill phone-name">Asus Rog phone 3</div>
               <div class="p-2 flex-fill phone-name"> </div>
               <div class="p-2 flex-fill phone-name">Samsung Galaxy Note</div>
             </div>
             <div class="break" id="btn">
-                <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn5">Compare</button>
+                <button type="submit" class="btn btn-success" id="compare-btn-5" name="compare-btn" value="btn5">Compare</button>
             </div>
           </div>
 
@@ -146,7 +145,7 @@
               <div class="p-2 flex-fill phone-name">Xiaomi Mi Redmi 9t</div>
             </div>
             <div class="break" id="btn">
-              <button type="submit" class="btn btn-success compare-btn" id="compare-btn-1" name="compare-btn" value="btn6">Compare</button>
+              <button type="submit" class="btn btn-success compare-btn" id="compare-btn-6" name="compare-btn" value="btn6">Compare</button>
             </div>
           </div>
       </div>
@@ -179,6 +178,38 @@
       });
     });
   </script>
+  <script>
+    var form = document.getElementById('phone-form');
+    var btn1 = document.getElementById('compare-btn-1');
+    var btn2 = document.getElementById('compare-btn-2');
+    var btn3 = document.getElementById('compare-btn-3');
+    var btn4 = document.getElementById('compare-btn-4');
+    var btn5 = document.getElementById('compare-btn-5');
+    var btn6 = document.getElementById('compare-btn-6');
+  
+    btn1.addEventListener('click', function() {
+      form.action = "/compare/OnePlus%207/Oppo%20Reno2";
+    });
+  
+    btn2.addEventListener('click', function() {
+      form.action = "/compare/Xiaomi%20Redmi%20K30/Realme%208i";
+    });
+
+    btn3.addEventListener('click', function() {
+      form.action = "/compare/MOTOROLA%20MOTO%20G30/REALME%206I";
+    });
+  
+    btn4.addEventListener('click', function() {
+      form.action = "/compare/Samsung%20Galaxy%20M51/Xiaomi%20Mi%208%20Telephoto ";
+    });
+    btn5.addEventListener('click', function() {
+      form.action = "/compare/Asus%20ROG%20Phone%203/Samsung%20Galaxy%20Note10+%20Telephoto";
+    });
+  
+    btn6.addEventListener('click', function() {
+      form.action = "/compare/Honor%209X%20Pro/Xiaomi%20Redmi%209T ";
+    });
+  </script>  
 </body>
 
 </html>
