@@ -22,7 +22,7 @@
 
 #search {
   width: auto;
-  padding-left: 2.5%;
+  padding-left: 6%;
 }
 
 .btn {
@@ -96,17 +96,13 @@ footer p {
     object-fit: cover;
   }
 }
- /* #logo{
-  max-height: 50px;
-  min-height: 20px;
- } */
  @media (max-width: 767px) {
   #logo{
     flex-basis: 100%;
     max-width: 100%;
   }
   #logo{
-    width: 40%;
+    width: auto;
     height: 10%;
     object-fit: cover;
 

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for,jsonify
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
+from bs4 import BeautifulSoup
 import sqlite3
 
 app = Flask(__name__)
@@ -79,11 +80,6 @@ def login():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/compare', methods = ['POST','GET'])
-@login_required
-def comp():
-    return render_template('compare.html')
-
 
 @app.route('/index', methods=['POST','GET'])
 @login_required
@@ -95,6 +91,75 @@ def home():
     conn.close()
     return render_template('index.html', dropdown_data=dropdown_data)
 
+@app.route('/comp', methods = ['POST','GET'])
+@login_required
+def comp():
+    return render_template('compare.html')
+
+@app.route('/se', methods = ['POST','GET'])
+@login_required
+def se():
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 10T ",))
+    rows = c.fetchone()   
+    result = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 7 ",))
+    rows = c.fetchone()   
+    res_1 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "Realme 8i ",))
+    rows = c.fetchone()   
+    res_2 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    
+    return render_template('se.html',result=result,res_1=res_1,res_2=res_2)
+
+
+
+@app.route('/autocomplete')
+def autocomplete():
+    query = request.args.get('term', '')
+    results = []
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    c.execute("SELECT \ufeffPhone_name FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
+    rows = c.fetchall()
+
+    for row in rows:
+        results.append(row[0])
+
+    return jsonify(results)
+
+@app.route('/search')
+def search():
+    query = request.args.get('q', '')
+    results = []
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
+    rows = c.fetchone()   
+    results = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    return render_template('search.html', results=results)
+
+@app.route('/Auto_search')
+def Auto_search():
+    query = request.args.get('q', '')
+    result = []
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
+    rows = c.fetchone()   
+    result = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
+    print(result)
+    res_1 = "yes"
+    res_2 = "not_yes"
+    return render_template('se.html', result=result,res_1=res_1,res_2=res_2)
+
+
 @app.route('/compare', methods=['POST'])
 def compare():
     phone1_name = 'OnePlus 11R'
@@ -104,17 +169,6 @@ def compare():
     print(b)
     # Render a template with the phone names
     return render_template('dashboard.html', phone1_name=phone1_name, phone2_name=phone2_name)
-
-dummy_data = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape']
-
-@app.route('/autocomplete')
-def autocomplete():
-    search = request.args.get('search')
-    results = []
-    for data in dummy_data:
-        if search.lower() in data.lower():
-            results.append(data)
-    return {'results': results}
 
 
 @app.route('/get_row_data', methods=['POST'])
@@ -127,6 +181,7 @@ def get_row_data():
     row_data = cursor.fetchone()
     response = {'column1': row_data[0], 'column2': row_data[1], 'column3': row_data[2], 'column4': row_data[3], 'column5': row_data[5],
                  'column6': row_data[6], 'column7': row_data[7], 'column8': row_data[8], 'column9': row_data[9], 'column10': row_data[10], 'column11': row_data[11]}
+    print(response)
     return jsonify(response)
 
 
@@ -142,6 +197,7 @@ def get_row_data_2():
                  'column_6': row_data_2[6], 'column_7': row_data_2[7], 'column_8': row_data_2[8], 'column_9': row_data_2[9], 'column_10': row_data_2[10], 
                  'column_11': row_data_2[11]}
         return jsonify(response_2)
+
 
 
 @app.route('/get_row_data_3', methods=['POST'])
