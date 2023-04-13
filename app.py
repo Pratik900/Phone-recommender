@@ -117,7 +117,7 @@ def autocomplete():
         conn = sqlite3.connect('.\database\database.db')
         c = conn.cursor()
         c.execute("SELECT \ufeffPhone_name FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
-        rows = c.fetchall()
+        rows = c.fetchall() 
     print(rows)
     for row in rows:
         results.append(row[0])
@@ -220,20 +220,6 @@ def compare(phone1_name, phone2_name):
     if request.method == 'POST':
         b = request.form.get('compare-btn')
         return redirect(url_for('se', phone1_name=phone1_name, phone2_name=phone2_name))
-
-
-@app.route('/get_row_data', methods=['POST'])
-def get_row_data():
-    conn = sqlite3.connect('.\database\database.db')
-    cursor = conn.cursor()
-    selected_value = request.form['selected_value']
-    print(selected_value)
-    cursor.execute("SELECT * FROM phone WHERE  \ufeffPhone_name = ?", (selected_value,))
-    row_data = cursor.fetchone()
-    response = {'column1': row_data[0], 'column2': row_data[1], 'column3': row_data[2], 'column4': row_data[3], 'column5': row_data[5],
-                 'column6': row_data[6], 'column7': row_data[7], 'column8': row_data[8], 'column9': row_data[9], 'column10': row_data[10], 'column11': row_data[11]}
-    print(response)
-    return jsonify(response)
 
 @app.route('/index/about')
 @login_required
