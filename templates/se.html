@@ -45,27 +45,59 @@
               <div class="box border-bottom">
                   <div class="form-group text-center">
                       <h1>FILTER</h1>
-                      
                   </div>
                   <div>
-                      <h5 class=""> Brands </h5>
+                    <h5 class=""> Brands </h5>
                   </div>
-                  <div> <label class="tick">Asus <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Google<input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Honor <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">HTC <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Huawei <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">LG <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Motorola <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Nothing <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">OnePlus <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Oppo <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Realme <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Samsung <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Redmi <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Vivo <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Xiaomi <input type="checkbox"> <span class="check"></span> </label> </div>
-                  <div> <label class="tick">Sony <input type="checkbox"> <span class="check"></span> </label> </div>
+                  <div id="checkbox-container">
+                      <div>
+                          <label class="tick">Asus <input type="checkbox" name="brand" value="Asus"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                          <label class="tick">Google <input type="checkbox" name="brand" value="Google"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                          <label class="tick">Honor <input type="checkbox" name="brand" value="Honor"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">HTC <input type="checkbox" name="brand" value="HTC"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Huawei <input type="checkbox" name="brand" value="Huawei"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">LG <input type="checkbox" name="brand" value="LG"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Motorola <input type="checkbox" name="brand" value="Motorola"> <span class="check"></span> </label>
+                      </div>
+
+                      <label class="tick">Nothing <input type="checkbox" name="brand" value="Nothing"> <span class="check"></span> </label>
+                      <div>
+                          <label class="tick">OnePlus <input type="checkbox" name="brand" value="OnePlus"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                          <label class="tick">Oppo <input type="checkbox" name="brand" value="Oppo"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Realme <input type="checkbox" name="brand" value="Realme"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Samsung <input type="checkbox" name="brand" value="Samsung"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Redmi <input type="checkbox" name="brand" value="Redmi"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Vivo <input type="checkbox" name="brand" value="Vivo"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Xiaomi <input type="checkbox" name="brand" value="Xiaomi"> <span class="check"></span> </label>
+                      </div>
+                      <div>
+                        <label class="tick">Sony <input type="checkbox" name="brand" value="Sony"> <span class="check"></span> </label>
+                      </div>
+                  </div>
                   <div>
                       <h5 class=""> Price</h5>
                   </div>
@@ -188,8 +220,7 @@
           });
         });
       });
-    </script>
-    <script>
+
       $(document).ready(function() {
         $('#search-button1').click(function() {
           var query = $('#search-box').val();
@@ -206,62 +237,73 @@
           });
         });
       });
-    </script>
-    <script>
-        $(function() {
-        $('#search-box').autocomplete({
-            source: function(request, response) {
-            $.getJSON('/autocomplete', {
-                term: request.term
-            }, function(data) {
-                response(data);
+
+            $(function() {
+            $('#search-box').autocomplete({
+                source: function(request, response) {
+                    const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
+                    const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
+
+                    $.getJSON('/autocomplete', {
+                        term: request.term,
+                        t: checkedValues.join(',')
+                    }, function(data) {
+                        response(data);
+                    });
+                },
+                minLength: 1
             });
-            },
-            minLength: 2
+
+            $('#search-form').submit(function(e) {
+                e.preventDefault();
+                var query = $('#search-box').val();
+                window.location.href = '/Auto_search?q=' + query;
+            });
         });
-        
-        $('#search-form').submit(function(e) {
-            e.preventDefault();
-            var query = $('#search-box').val();
-            window.location.href = '/Auto_search?q=' + query;
+        $(function() {
+            $('#search-box1').autocomplete({
+                source: function(request, response) {
+                    const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
+                    const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
+
+                    $.getJSON('/autocomplete', {
+                        term: request.term,
+                        t: checkedValues.join(',')
+                    }, function(data) {
+                        response(data);
+                    });
+                },
+                minLength: 1
+            });
+
+            $('#search-form').submit(function(e) {
+                e.preventDefault();
+                var query = $('#search-box1').val();
+                window.location.href = '/Auto_search?w=' + query;
+            });
         });
+        $(function() {
+            $('#search-box2').autocomplete({
+                source: function(request, response) {
+                    const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
+                    const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
+
+                    $.getJSON('/autocomplete', {
+                        term: request.term,
+                        t: checkedValues.join(',')
+                    }, function(data) {
+                        response(data);
+                    });
+                },
+                minLength: 1
+            });
+
+            $('#search-form').submit(function(e) {
+                e.preventDefault();
+                var query = $('#search-box2').val();
+                window.location.href = '/Auto_search?e=' + query;
+            });
         });
-          $(function() {
-          $('#search-box1').autocomplete({
-              source: function(request, response) {
-              $.getJSON('/autocomplete', {
-                  term: request.term
-              }, function(data) {
-                  response(data);
-              });
-              },
-              minLength: 2
-          });
-          
-          $('#search-form').submit(function(e) {
-              e.preventDefault();
-              var query = $('#search-box1').val();
-              window.location.href = '/Auto_search?w=' + query;
-          });
-          });
-          $(function() {
-          $('#search-box2').autocomplete({
-              source: function(request, response) {
-              $.getJSON('/autocomplete', {
-                  term: request.term
-              }, function(data) {
-                  response(data);
-              });
-              },
-              minLength: 2
-          });
-          
-          $('#search-form').submit(function(e) {
-              e.preventDefault();
-              var query = $('#search-box2').val();
-              window.location.href = '/Auto_search?e=' + query;
-          });
-          });
       </script>
 </body>
 

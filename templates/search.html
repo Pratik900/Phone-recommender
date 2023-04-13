@@ -73,8 +73,10 @@
                 response(data);
             });
             },
-            minLength: 2
         });
+        $('#search-box').on('focus', function() {
+              $(this).autocomplete('search', '');
+          });
         
         $('#search-form').submit(function(e) {
             e.preventDefault();
