@@ -168,7 +168,7 @@
     $(function() {
       $('#search-box').autocomplete({
         source: function(request, response) {
-          $.getJSON('/autocomplete', {
+          $.getJSON('/mainserach', {
             term: request.term
           }, function(data) {
             response(data);

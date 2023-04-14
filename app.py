@@ -96,33 +96,53 @@ def home():
 def comp():
     return render_template('compare.html')
 
+@app.route('/mainserach',methods = ['GET'])
+def mainserach():
+    query = request.args.get('term', '')
+    main_results = []
+    print("query")
+    conn = sqlite3.connect('.\database\database.db')
+    c = conn.cursor()
+    c.execute("SELECT \ufeffPhone_name FROM phone WHERE \ufeffPhone_name LIKE ? ",('%' + query + '%',))
+    rows = c.fetchall() 
+    print(rows)
+    for row in rows:
+        main_results.append(row[0])
+        
+    return jsonify(main_results)
+
 
 @app.route('/autocomplete',methods = ['GET'])
 def autocomplete():
     query = request.args.get('term', '')
     selected_brands = request.args.get('t', '').split(',')
+    min_price = request.args.get('min', 10000)
+    max_price = request.args.get('max', 50000)
+    min = "₹" + str(min_price)
+    max = "₹" + str(max_price)
     results = []
-    print(selected_brands,"Brands")
-    print(query)
 
     if selected_brands[0] != '':
         print("selected_brand")
         conn = sqlite3.connect('.\database\database.db')
         c = conn.cursor()
         like_clause = ' OR '.join([f"\ufeffPhone_name LIKE '%{brand}%'" for brand in selected_brands])
-        c.execute(f"SELECT \ufeffPhone_name FROM phone WHERE {like_clause}")
+        query = f'''SELECT \ufeffPhone_name FROM phone WHERE ({like_clause}) AND (Price BETWEEN '{min}' AND '{max}')'''
+        c.execute(query)
         rows = c.fetchall()
-    if selected_brands[0] == '':
+    else:
         print("query")
         conn = sqlite3.connect('.\database\database.db')
         c = conn.cursor()
-        c.execute("SELECT \ufeffPhone_name FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
+        c.execute("SELECT \ufeffPhone_name FROM phone WHERE \ufeffPhone_name LIKE ? AND (Price BETWEEN ? AND ?)",
+            ('%' + query + '%', min, max,))
         rows = c.fetchall() 
     print(rows)
     for row in rows:
         results.append(row[0])
         
     return jsonify(results)
+
 
 @app.route('/search')
 def search():

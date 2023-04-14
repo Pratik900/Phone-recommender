@@ -103,15 +103,15 @@
                   </div>
                   <div class="price-input">
                     <div class="field">
-                      <span>Min</span>
-                      <input type="number" class="input-min" value="0">
+                        <span>Min</span>
+                        <input type="number" class="input-min" value="10000">
                     </div>
                     <div class="separator">-</div>
                     <div class="field">
-                      <span>Max</span>
-                      <input type="number" class="input-max" value="10000">
+                        <span>Max</span>
+                        <input type="number" class="input-max" value="50000">
                     </div>
-                  </div>                  
+                  </div>                 
               </div>
           </div>
           <div id="products">
@@ -173,8 +173,6 @@
               </div>
           </div>
       </div>
-
-
   <footer class="footer">
     <div class="container">
       <p>&phone; contact</p>
@@ -187,66 +185,70 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
     <script>
+              $(document).ready(function() {
+              $('#search-button3').click(function() {
+                var query2 = $('#search-box2').val();
+                $.ajax({
+                  url: '/Auto_search_2?e=' + query2,
+                  type: 'GET',
+                  success: function(phone_3) {
+                    $('#phone_3').html(phone_3.column1 + ' ' + phone_3.column2);
+                    const phone3 = document.getElementById("phone_3").textContent.trim();
+                    if (phone3 !== "") {
+                    document.getElementById("res_2").style.display = "none";
+                  }
+                  }
+                });
+              });
+            });
+
             $(document).ready(function() {
-        $('#search-button3').click(function() {
-          var query2 = $('#search-box2').val();
-          $.ajax({
-            url: '/Auto_search_2?e=' + query2,
-            type: 'GET',
-            success: function(phone_3) {
-              $('#phone_3').html(phone_3.column1 + ' ' + phone_3.column2);
-              const phone3 = document.getElementById("phone_3").textContent.trim();
-              if (phone3 !== "") {
-              document.getElementById("res_2").style.display = "none";
-            }
-            }
-          });
-        });
-      });
+              $('#search-button2').click(function() {
+                var query1 = $('#search-box1').val();
+                $.ajax({
+                  url: '/Auto_search_1?w=' + query1,
+                  type: 'GET',
+                  success: function(phone_2) {
+                    $('#phone_2').html(phone_2.column1 + ' ' + phone_2.column2);
+                    const phone2 = document.getElementById("phone_2").textContent.trim();
+                    if (phone2 !== "") {
+                    document.getElementById("res_1").style.display = "none";
+                  }
+                  }
+                });
+              });
+            });
 
-      $(document).ready(function() {
-        $('#search-button2').click(function() {
-          var query1 = $('#search-box1').val();
-          $.ajax({
-            url: '/Auto_search_1?w=' + query1,
-            type: 'GET',
-            success: function(phone_2) {
-              $('#phone_2').html(phone_2.column1 + ' ' + phone_2.column2);
-              const phone2 = document.getElementById("phone_2").textContent.trim();
-              if (phone2 !== "") {
-              document.getElementById("res_1").style.display = "none";
-            }
-            }
-          });
-        });
-      });
-
-      $(document).ready(function() {
-        $('#search-button1').click(function() {
-          var query = $('#search-box').val();
-          $.ajax({
-            url: '/Auto_search?q=' + query,
-            type: 'GET',
-            success: function(phone_1) {
-              $('#phone_1').html(phone_1.column1 + ' ' + phone_1.column2);
-              const phone1 = document.getElementById("phone_1").textContent.trim();
-              if (phone1 !== "") {
-              document.getElementById("result").style.display = "none";
-            }
-            }
-          });
-        });
-      });
+            $(document).ready(function() {
+              $('#search-button1').click(function() {
+                var query = $('#search-box').val();
+                $.ajax({
+                  url: '/Auto_search?q=' + query,
+                  type: 'GET',
+                  success: function(phone_1) {
+                    $('#phone_1').html(phone_1.column1 + ' ' + phone_1.column2);
+                    const phone1 = document.getElementById("phone_1").textContent.trim();
+                    if (phone1 !== "") {
+                    document.getElementById("result").style.display = "none";
+                  }
+                  }
+                });
+              });
+            });
 
             $(function() {
             $('#search-box').autocomplete({
                 source: function(request, response) {
                     const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
                     const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
+                    const min = $('.input-min').val();
+                    const max = $('.input-max').val();
 
                     $.getJSON('/autocomplete', {
                         term: request.term,
-                        t: checkedValues.join(',')
+                        t: checkedValues.join(','),
+                        min: min,
+                        max: max
                     }, function(data) {
                         response(data);
                     });
@@ -261,50 +263,58 @@
             });
         });
         $(function() {
-            $('#search-box1').autocomplete({
-                source: function(request, response) {
-                    const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
-                    const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
+        $('#search-box1').autocomplete({
+            source: function(request, response) {
+              const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
+              const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
 
-                    $.getJSON('/autocomplete', {
-                        term: request.term,
-                        t: checkedValues.join(',')
-                    }, function(data) {
-                        response(data);
-                    });
-                },
-                minLength: 1
-            });
+              const minValue = $('.input-min').val();
+              const maxValue = $('.input-max').val();
 
-            $('#search-form').submit(function(e) {
-                e.preventDefault();
-                var query = $('#search-box1').val();
-                window.location.href = '/Auto_search?w=' + query;
-            });
+              $.getJSON('/autocomplete', {
+                term: request.term,
+                t: checkedValues.join(','),
+                min: minValue,
+                max: maxValue
+              }, function(data) {
+                response(data);
+              });
+            },
+            minLength: 1
+          });
+
+          $('#search-form').submit(function(e) {
+            e.preventDefault();
+            var query = $('#search-box1').val();
+            window.location.href = '/Auto_search?w=' + query;
+          });
         });
         $(function() {
-            $('#search-box2').autocomplete({
-                source: function(request, response) {
-                    const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
-                    const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
+        $('#search-box2').autocomplete({
+            source: function(request, response) {
+                const checkedBoxes = $('#checkbox-container input[type=checkbox]:checked');
+                const checkedValues = Array.from(checkedBoxes).map((checkbox) => checkbox.value);
+                const min = $('.input-min').val();
+                const max = $('.input-max').val();
 
-                    $.getJSON('/autocomplete', {
-                        term: request.term,
-                        t: checkedValues.join(',')
-                    }, function(data) {
-                        response(data);
-                    });
-                },
-                minLength: 1
-            });
-
-            $('#search-form').submit(function(e) {
-                e.preventDefault();
-                var query = $('#search-box2').val();
-                window.location.href = '/Auto_search?e=' + query;
-            });
+                $.getJSON('/autocomplete', {
+                    term: request.term,
+                    t: checkedValues.join(','),
+                    min: min,
+                    max: max
+                }, function(data) {
+                    response(data);
+                });
+            },
+            minLength: 1
         });
-      </script>
-</body>
 
+        $('#search-form').submit(function(e) {
+            e.preventDefault();
+            var query = $('#search-box2').val();
+            window.location.href = '/Auto_search?e=' + query;
+        });
+      });
+    </script>
+</body>
 </html>
