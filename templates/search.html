@@ -46,8 +46,19 @@
       <div class="row flex-container">
 
         <div class="col-md-4 flex-item">
-            {{results}}
-            <img src="{{results.column2}}" alt="">
+          <ul>
+            <li> {{results.column1}} </li>
+            <img src="{{results.column2}}" alt=""> 
+            <li> {{results.column3}} </li>
+            <li> {{results.column4}} </li>
+            <li> {{results.column5}} </li>
+            <li> {{results.column6}} </li>
+            <li> {{results.column7}} </li>
+            <li> {{results.column8}} </li>
+            <li> {{results.column9}} </li>
+            <li> {{results.column10}} </li>
+            <li> {{results.column11}} </li>
+          </ul>
         </div>
       </div>
   </div>
@@ -71,6 +82,11 @@
                 term: request.term
             }, function(data) {
                 response(data);
+                $('.ui-autocomplete').css({
+              'max-height': '35%', // set max height to limit size of response container
+              'overflow-y': 'auto',
+              'padding-top':'2%' // enable vertical scrollbar if response container overflows
+            }).scrollTop(0); // reset scroll position to top of container
             });
             },
         });

@@ -31,14 +31,8 @@
             <a class="nav-link " aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link " href="/index">Comparision</a>
+            <a class="nav-link " href="/compare">Comparision</a>
           </li> 
-          <li class="nav-item ">
-            <a class="nav-link " href="/comp">comp</a>
-          </li> 
-          <li class="nav-item ">
-            <a class="nav-link " href="/se">se</a>
-          </li>
           <li class="nav-item ">
             <a class="nav-link " href="/index/about">About</a>
           </li>
@@ -50,103 +44,197 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <form method="POST" action="/compare" name="phone-form" id="phone-form">
+    <form method="POST" action="/compare_phone" name="phone-form" id="phone-form">
       <div class="row flex-container">
 
-        <div class="col-md-4 flex-item">
+        <div class="col-md-5 flex-item">
           <div class="d-flex justify-content-around align-items-center mb-2">
-            <img src="https://cdn1.smartprix.com/rx-iH3muFHfz-w280-h280/oneplus-7-8gb-ram-25.webp" alt="Flexbox Image 1" />
+            <div>
+              <img src="https://cdn1.smartprix.com/rx-iH3muFHfz-w280-h280/oneplus-7-8gb-ram-25.webp" alt="OnePlus 7" />
+                <div class="d-flex align-items-center justify-content-center price">
+                  <div class="text-center mt-auto">OnePlus 7</div>
+                </div>
+            </div>
             <span class="vs">vs</span>
-            <img src="https://cdn1.smartprix.com/rx-ijULh2d9g-w280-h280/oppo-reno-2.webp" alt="Flexbox Image 1" />
+            <div>
+              <img src="https://cdn1.smartprix.com/rx-iiwv5EJze-w280-h280/nothing-phone-1.webp" alt="Nothing phone 1" />
+                <div class="d-flex align-items-center justify-content-center price">
+                  <div class="text-center mt-auto">Nothing phone 1</div>
+                </div>
+            </div>
+            
+            <span class="vs">vs</span>
+            <div>
+              <img src="https://cdn1.smartprix.com/rx-ijULh2d9g-w280-h280/oppo-reno-2.webp" alt="Oppo Reno 2" />
+                <div class="d-flex align-items-center justify-content-center price">
+                  <div class="text-center mt-auto">Oppo Reno 2</div>
+                </div>
+            </div>
+            
+      
           </div>
-          <div class="d-flex justify-content-around mb-2" id="flex_hover">
-            <div class="p-2 flex-fill phone-name">OnePlus 7</div>
-            <div class="p-2 flex-fill phone-name"> </div>
-            <div class="p-2 flex-fill phone-name">Oppo Reno 2</div>
-          </div>
+          
           <div class="break" id="btn">
               <button type="submit" class="btn btn-success" id="compare-btn-1" name="compare-btn" value="btn1">Compare</button>
           </div>
         </div>
       
-        <div class="col-md-4 flex-item">
+        <div class="col-md-5 flex-item">
           <div class="d-flex justify-content-around align-items-center mb-2">
-            <img src="https://cdn1.smartprix.com/rx-ispXKz5Yn-w280-h280/realme-8i-6gb-ram-12.webp" alt="Flexbox Image 1" />
+            <div>
+              <img src="https://cdn1.smartprix.com/rx-ispXKz5Yn-w280-h280/realme-8i-6gb-ram-12.webp" alt="Huawei Honor 9x Pro" />
+                <div class="d-flex align-items-center justify-content-center price">
+                  <div class="text-muted text-center mt-auto">Realme 8i</div>
+                </div>
+            </div>
             <span class="vs">vs</span>
-            <img src="https://cdn1.smartprix.com/rx-iFqV4u3Qa-w280-h280/xiaomi-redmi-k30.webp" alt="Flexbox Image 1" />
+            <div>
+              <img src="https://cdn1.smartprix.com/rx-ixLSVBm6G-w280-h280/samsung-galaxy-a14-5.webp
+              " alt="Huawei Honor 9x Pro" />
+                <div class="d-flex align-items-center justify-content-center price">
+                  <div class="text-center mt-auto">Samsung Galaxy A14 5G  </div>
+                </div>
+            </div>
+            <span class="vs">vs</span>
+            <div>
+              <img src="https://cdn1.smartprix.com/rx-iFqV4u3Qa-w280-h280/xiaomi-redmi-k30.webp" alt="Huawei Honor 9x Pro" />
+                <div class="d-flex align-items-center justify-content-center price">
+                  <div class="text-muted text-center mt-auto">Xiaomi Redmi k30</div>
+                </div>
+            </div>
+            
           </div>
-          <div class="d-flex justify-content-around mb-2">
-            <div class="p-2 flex-fill phone-name">Realme 8i</div>
-            <div class="p-2 flex-fill phone-name"> </div>
-            <div class="p-2 flex-fill phone-name">Xiaomi Redmi k30</div>
-          </div>
+          
           <div class="break" id="btn">
               <button type="submit" class="btn btn-success" id="compare-btn-2" name="compare-btn" value="btn2">Compare</button>
           </div>
         </div>
 
-          <div class="col-md-4 flex-item">
+          <div class="col-md-5 flex-item">
             <div class="d-flex justify-content-around align-items-center mb-2">
-              <img src="https://cdn1.smartprix.com/rx-iukoaruZz-w280-h280/motorola-moto-g30.webp" alt="Flexbox Image 1" />
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-iaOkJshyW-w280-h280/xiaomi-redmi-note-8.webp
+                " alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-center mt-auto">Xiaomi Redmi Note 8 </div>
+                  </div>
+              </div>
               <span class="vs">vs</span>
-              <img src="https://cdn1.smartprix.com/rx-igAvq7Z0m-w280-h280/realme-6i.webp" alt="Flexbox Image 1" />
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-iukoaruZz-w280-h280/motorola-moto-g30.webp" alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">Motorola Moto G30</div>
+                  </div>
+              </div>
+              
+              <span class="vs">vs</span>
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-igAvq7Z0m-w280-h280/realme-6i.webp" alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">Realme 6i</div>
+                  </div>
+              </div>
+              
             </div>
-            <div class="d-flex justify-content-around mb-2">
-              <div class="p-2 flex-fill phone-name">Motorola Moto G30</div>
-              <div class="p-2 flex-fill phone-name"> </div>
-              <div class="p-2 flex-fill phone-name">Realme 6i</div>
-            </div>
+            
             <div class="break" id="btn">
               <button type="submit" class="btn btn-success" id="compare-btn-3" name="compare-btn" value="btn3">Compare</button>
             </div>
           </div>
 
-          <div class="col-md-4 flex-item">
+          <div class="col-md-5 flex-item">
+            
             <div class="d-flex justify-content-around align-items-center mb-2">
-              <img src="https://cdn1.smartprix.com/rx-imI0GMKgu-w280-h280/samsung-galaxy-m51.webp" alt="Flexbox Image 1" />
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-inQ71FxJ9-w280-h280/realme-x3-superzoom.webp
+                " alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-center mt-auto">Realme X3 SuperZoom  </div>
+                  </div>
+              </div>
               <span class="vs">vs</span>
-              <img src="https://cdn1.smartprix.com/rx-i7OsopWs6-w280-h280/xiaomi-mi-8-lite-4gb.webp" alt="Flexbox Image 1" />
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-imI0GMKgu-w280-h280/samsung-galaxy-m51.webp" alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">Samsung Galaxy M51</div>
+                  </div>
+              </div>
+              <span class="vs">vs</span>
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-i7OsopWs6-w280-h280/xiaomi-mi-8-lite-4gb.webp" alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">Xiaomi mi 8 Lite</div>
+                  </div>
+              </div>
+              
             </div>
-            <div class="d-flex justify-content-around mb-2">
-              <div class="p-2 flex-fill phone-name">Samsung Galaxy M51</div>
-              <div class="p-2 flex-fill phone-name"> </div>
-              <div class="p-2 flex-fill phone-name">Xiaomi mi 8 Lite</div>
-            </div>
+            
             <div class="break" id="btn">
                 <button type="submit" class="btn btn-success" id="compare-btn-4" name="compare-btn" value="btn4">Compare</button>
             </div>
           </div>
 
-          <div class="col-md-4 flex-item">
+          <div class="col-md-5 flex-item">
             <div class="d-flex justify-content-around align-items-center mb-2">
-              <img src="https://cdn1.smartprix.com/rx-ioLedjrMc-w280-h280/asus-rog-phone-3-12g.webp" alt="Flexbox Image 1" />
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-ixH3TGWPr-w280-h280/oneplus-10-pro-5g.webp
+                " alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">OnePlus 10 Pro 
+                    </div>
+                  </div>
+              </div>
               <span class="vs">vs</span>
-              <img src="https://cdn1.smartprix.com/rx-iEUlsfiIk-w280-h280/samsung-galaxy-note.webp" alt="Flexbox Image 1" />
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-ioLedjrMc-w280-h280/asus-rog-phone-3-12g.webp" alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">Asus Rog phone 3</div>
+                  </div>
+              </div>
+              <span class="vs">vs</span>
+              <div>
+                <img src="https://cdn1.smartprix.com/rx-iEUlsfiIk-w280-h280/samsung-galaxy-note.webp" alt="Huawei Honor 9x Pro" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">Samsung Galaxy Note</div>
+                  </div>
+              </div>
+              
             </div>
-            <div class="d-flex justify-content-around mb-2">
-              <div class="p-2 flex-fill phone-name">Asus Rog phone 3</div>
-              <div class="p-2 flex-fill phone-name"> </div>
-              <div class="p-2 flex-fill phone-name">Samsung Galaxy Note</div>
-            </div>
+            
             <div class="break" id="btn">
                 <button type="submit" class="btn btn-success" id="compare-btn-5" name="compare-btn" value="btn5">Compare</button>
             </div>
           </div>
 
-          <div class="col-md-4 flex-item">
-            <div class="d-flex justify-content-around align-items-center mb-2">
-              <img src="https://cdn1.smartprix.com/rx-iJQaIGe8O-w280-h280/huawei-honor-9x-pro.webp" alt="Huawei Honor 9x Pro" />
-              <span class="vs">vs</span>
-              <img src="https://cdn1.smartprix.com/rx-imTnMR5Zq-w280-h280/xiaomi-redmi-9t.webp" alt="Xiaomi Redmi 9t" />
+
+          <div class="col-md-5 flex-item">
+              <div class="d-flex justify-content-around align-items-center mb-2">
+                <div>
+                  <img src="https://cdn1.smartprix.com/rx-iMDs8UcFr-w280-h280/honor-10x-lite.webp" alt="Huawei Honor 9x Pro" />
+                    <div class="d-flex align-items-center justify-content-center price">
+                      <div class="text-muted text-center mt-auto">Honor 10X Lite</div>
+                    </div>
+                </div>
+                <span class="vs">vs</span>
+                <div>
+                  <img src="https://cdn1.smartprix.com/rx-iJQaIGe8O-w280-h280/huawei-honor-9x-pro.webp" alt="Huawei Honor 9x Pro" />
+                    <div class="d-flex align-items-center justify-content-center price">
+                      <div class="text-muted text-center mt-auto">Huawei Honor 9x pro</div>
+                    </div>
+                </div>
+                <span class="vs">vs</span>
+                <div>
+                  <img src="https://cdn1.smartprix.com/rx-imTnMR5Zq-w280-h280/xiaomi-redmi-9t.webp" alt="Xiaomi Redmi 9t" />
+                  <div class="d-flex align-items-center justify-content-center price">
+                    <div class="text-muted text-center mt-auto">Xiaomi Mi Readmi 9t</div>
+                  </div>  
+              </div>
+          </div>
+          <div class="break" id="btn">
+            <button type="submit" class="btn btn-success" id="compare-btn-6" name="compare-btn" value="btn6">Compare</button>
+        </div>
             </div>
-            <div class="d-flex justify-content-around mb-2">
-              <div class="p-2 flex-fill phone-name">Huawei Honor 9x Pro</div>
-              <div class="p-2 flex-fill phone-name"> </div>
-              <div class="p-2 flex-fill phone-name">Xiaomi Mi Redmi 9t</div>
-            </div>
-            <div class="break" id="btn">
-              <button type="submit" class="btn btn-success compare-btn" id="compare-btn-6" name="compare-btn" value="btn6">Compare</button>
-            </div>
+            
           </div>
       </div>
     </form>
@@ -172,12 +260,17 @@
             term: request.term
           }, function(data) {
             response(data);
+            $('.ui-autocomplete').css({
+              'max-height': '35%', // set max height to limit size of response container
+              'overflow-y': 'auto',
+              'padding-top':'2%' // enable vertical scrollbar if response container overflows
+            }).scrollTop(0);
           });
         },
       });
       $('#search-box').on('focus', function() {
-              $(this).autocomplete('search', '');
-          });
+        $(this).autocomplete('search', '');
+      });
     });
   </script>
   <script>
@@ -190,26 +283,26 @@
     var btn6 = document.getElementById('compare-btn-6');
   
     btn1.addEventListener('click', function() {
-      form.action = "/compare/OnePlus%207/Oppo%20Reno2";
+      form.action = "/compare_phone/OnePlus%207/Nothing%20phone%201/Oppo%20Reno2";
     });
   
     btn2.addEventListener('click', function() {
-      form.action = "/compare/Xiaomi%20Redmi%20K30/Realme%208i";
+      form.action = "/compare_phone/Realme%208i/Samsung%20Galaxy%20A14%205G/Xiaomi%20Redmi%20K30";
     });
 
     btn3.addEventListener('click', function() {
-      form.action = "/compare/MOTOROLA%20MOTO%20G30/REALME%206I";
+      form.action = "/compare_phone/Xiaomi%20Redmi%20Note%208/MOTOROLA%20MOTO%20G30/REALME%206I";
     });
   
     btn4.addEventListener('click', function() {
-      form.action = "/compare/Samsung%20Galaxy%20M51/Xiaomi%20Mi%208%20Telephoto ";
+      form.action = "/compare_phone/Realme%20X3%20SuperZoom/Samsung%20Galaxy%20M51/Xiaomi%20Mi%208%20Telephoto ";
     });
     btn5.addEventListener('click', function() {
-      form.action = "/compare/Asus%20ROG%20Phone%203/Samsung%20Galaxy%20Note10+%20Telephoto";
+      form.action = "/compare_phone/OnePlus%2010%20Pro/Asus%20ROG%20Phone%203/Samsung%20Galaxy%20Note10+%20Telephoto";
     });
   
     btn6.addEventListener('click', function() {
-      form.action = "/compare/Honor%209X%20Pro/Xiaomi%20Redmi%209T ";
+      form.action = "/compare_phone/Honor%2010X%20Lite/Honor%209X%20Pro/Xiaomi%20Redmi%209T ";
     });
   </script>  
 </body>

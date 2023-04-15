@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for,jsonify
+from flask import Flask, render_template, request, redirect, url_for,jsonify, session
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
-from bs4 import BeautifulSoup
 import sqlite3
 
 app = Flask(__name__)
@@ -81,21 +80,6 @@ def dashboard():
     return render_template('dashboard.html')
 
 
-@app.route('/index', methods=['POST','GET'])
-@login_required
-def home():
-    conn = sqlite3.connect('.\database\database.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT \ufeffPhone_name FROM phone')
-    dropdown_data = cursor.fetchall()
-    conn.close()
-    return render_template('index.html', dropdown_data=dropdown_data)
-
-@app.route('/comp', methods = ['POST','GET'])
-@login_required
-def comp():
-    return render_template('compare.html')
-
 @app.route('/mainserach',methods = ['GET'])
 def mainserach():
     query = request.args.get('term', '')
@@ -143,25 +127,28 @@ def autocomplete():
         
     return jsonify(results)
 
-
 @app.route('/search')
 def search():
     query = request.args.get('q', '')
     results = []
+    photo_res = []
     conn = sqlite3.connect('.\database\database.db')
     c = conn.cursor()
     c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
-    rows = c.fetchone()   
+    rows = c.fetchone() 
+    photo_res = {'column12':rows[12],'column13':rows[13]}  
+    print(photo_res)
     results = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
                  'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
     return render_template('search.html', results=results)
 
-@app.route('/se', methods=['POST', 'GET'])
+@app.route('/compare', methods=['POST', 'GET'])
 @login_required
-def se():
+def compare():
     phone1_name = request.args.get('phone1_name')
     phone2_name = request.args.get('phone2_name')
-    print(phone1_name,phone2_name)
+    phone3_name = request.args.get('phone3_name')
+    print(phone1_name,phone2_name,phone3_name)
     conn = sqlite3.connect('.\database\database.db')
     c = conn.cursor()
     if phone1_name:
@@ -186,20 +173,22 @@ def se():
         res_1 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
                  'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
 
-    if not phone1_name:
-        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ( "OnePlus 7 ",))
+    if phone3_name:
+        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + phone3_name + '%',))
         rows = c.fetchone()   
         res_2 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
                 'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
     else:
-        res_2 = None
+        c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ("OnePlus 10 Pro ",))
+        rows = c.fetchone()   
+        res_2 = {'column1':  rows[0], 'column2':  rows[1], 'column3':  rows[2], 'column4':  rows[3], 'column5':  rows[5],
+                'column6':  rows[6], 'column7':  rows[7], 'column8':  rows[8], 'column9':  rows[9], 'column10':  rows[10], 'column11':  rows[11]}
         
-    return render_template("se.html",result=result,res_1=res_1,res_2=res_2)
+    return render_template("compare.html",result=result,res_1=res_1,res_2=res_2)
 
 @app.route('/Auto_search')
 def Auto_search():
     query = request.args.get('q', '')
-    result = []
     conn = sqlite3.connect('.\database\database.db')
     c = conn.cursor()
     c.execute("SELECT * FROM phone WHERE \ufeffPhone_name LIKE ?", ('%' + query + '%',))
@@ -235,11 +224,11 @@ def Auto_search_2():
     print(phone_3)
     return jsonify(phone_3)
 
-@app.route('/compare/<phone1_name>/<phone2_name>', methods=['POST'])
-def compare(phone1_name, phone2_name):
+@app.route('/compare_phone/<phone1_name>/<phone2_name>/<phone3_name>', methods=['POST'])
+def compare_phone(phone1_name, phone2_name,phone3_name):
     if request.method == 'POST':
         b = request.form.get('compare-btn')
-        return redirect(url_for('se', phone1_name=phone1_name, phone2_name=phone2_name))
+        return redirect(url_for('compare', phone1_name=phone1_name, phone2_name=phone2_name,phone3_name=phone3_name))
 
 @app.route('/index/about')
 @login_required
